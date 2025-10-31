@@ -37,5 +37,5 @@ seeds-sunflower-display-name = подсолнух
 seeds-ambrosiagaia-name = амброзия гайа
 seeds-ambrosiagaia-display-name = амброзия гайа
 
-seeds-сannabisvita-name = конопля жизни
-seeds-сannabisvita-display-name-name = конопля жизни
+seeds-cannabisvita-name = конопля жизни
+seeds-cannabisvita-display-name = конопля жизни

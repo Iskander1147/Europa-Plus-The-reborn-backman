@@ -168,7 +168,7 @@
   id: CannabisVita
   name: Cannabis Vita
   noun: seeds-noun-seeds
-  displayName: seeds-сannabisvita-display-name
+  displayName: seeds-cannabisvita-display-name
   plantRsi: _EuropaBotany/Objects/Specific/Hydroponics/cannabis_vita.rsi
   packetPrototype: CannabisVitaSeeds
   productPrototypes:
