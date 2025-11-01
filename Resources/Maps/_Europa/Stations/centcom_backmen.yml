@@ -11767,7 +11767,7 @@ entities:
       pos: 16.5,75.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -121091.13
+      secondsUntilStateChange: 0
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -11939,7 +11939,7 @@ entities:
       pos: 68.5,79.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -123276.695
+      secondsUntilStateChange: 0
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -31064,7 +31064,7 @@ entities:
       pos: 1.5,62.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -123681.56
+      secondsUntilStateChange: 0
       state: Opening
   - uid: 3507
     components:
