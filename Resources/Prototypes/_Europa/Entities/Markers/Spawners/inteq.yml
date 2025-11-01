@@ -120,6 +120,7 @@
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
+    whitelisted: true
     raffle:
       settings: default
     mindRoles:

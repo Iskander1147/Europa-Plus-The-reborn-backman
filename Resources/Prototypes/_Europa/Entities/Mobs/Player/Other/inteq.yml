@@ -15,6 +15,7 @@
   components:
   - type: AntagImmune
   - type: GhostRole
+    whitelisted: true
     raffle:
       settings: default
     mindRoles:
