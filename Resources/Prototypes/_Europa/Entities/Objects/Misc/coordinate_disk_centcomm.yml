@@ -1,6 +1,6 @@
 - type: entity
   name: coordinates disk central command
-  parent: BaseItem
+  parent: [ BaseItem, BaseCentcommCommandContraband ]
   id: CoordinatesDiskCentComm
   description: A disk containing the coordinates to a Central Command station. Fits inside shuttle consoles.
   components:
