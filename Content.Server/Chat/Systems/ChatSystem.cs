@@ -141,6 +141,7 @@ using Content.Shared.Radio;
 using Content.Shared.Whitelist;
 using Content.Goobstation.Common.Chat;
 using Content.Goobstation.Common.Traits;
+using Content.Server._Europa.Chat;
 using Content.Server._Europa.TTS;
 using Content.Server.Radio;
 using Content.Shared._EinsteinEngines.Language.Systems;
@@ -188,6 +189,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // Goobstation - Starlight collective mind port
     [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
     [Dependency] private readonly TTSSystem _tts = default!;
+    [Dependency] private readonly EuropaChatAnnihilator _annihilator = default!;
 
     private const string DefaultAnnouncementSound = "/Audio/_Europa/Announcements/announce.ogg";
     private const string CentComAnnouncementSound = "/Audio/_Europa/Announcements/centcomm.ogg";
@@ -432,7 +434,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (player?.AttachedEntity is not { Valid: true } entity || source != entity)
             return;
 
-        message = SanitizeInGameOOCMessage(message);
+        message = SanitizeInGameOOCMessage(message, player);
 
         var sendType = type;
         if ((_adminManager.IsAdmin(player) && _adminManager.HasAdminFlag(player, AdminFlags.Moderator))
@@ -1149,7 +1151,14 @@ private string GetVoiceName(EntityUid source)
     // ReSharper disable once InconsistentNaming
     private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
     {
-        var newMessage = SanitizeMessageReplaceWords(message.Trim());
+        var trimmedMessage = message.Trim();
+        if (_annihilator.AnnihilateChudInIc(trimmedMessage, source))
+        {
+            emoteStr = null;
+            return "У меня аутизм.";
+        }
+
+        var newMessage = SanitizeMessageReplaceWords(trimmedMessage);
 
         newMessage = FuckHelper.SanitizeSimpleMessageForChat(newMessage);
 
@@ -1168,9 +1177,12 @@ private string GetVoiceName(EntityUid source)
         return prefix + newMessage;
     }
 
-    private string SanitizeInGameOOCMessage(string message)
+    private string SanitizeInGameOOCMessage(string message, ICommonSession? session)
     {
         var newMessage = message.Trim();
+        if (_annihilator.AnnihilateChudInOoc(newMessage, session))
+            return "У меня аутизм";
+
         newMessage = FuckHelper.SanitizeSimpleMessageForChat(newMessage);
 
         return newMessage;
