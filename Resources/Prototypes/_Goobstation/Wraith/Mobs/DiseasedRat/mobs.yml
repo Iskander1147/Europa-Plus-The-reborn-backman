@@ -33,7 +33,7 @@
       - Puddle
   - type: RatBite
     reagents:
-      Toxin: 8 # Swap for rat spit once virology is added
+      Toxin: 0.3 # Swap for rat spit once virology is added
   - type: ActionGrant
     actions:
     - ActionEatFilth
@@ -60,7 +60,7 @@
       fix1:
         shape:
           !type:PhysShapeCircle
-          radius: 0.35
+          radius: 0.7
         density: 60
         mask:
         - SmallMobMask
@@ -87,7 +87,7 @@
           Quantity: 100
   - type: MeleeChemicalInjector
     solution: melee
-    transferAmount: 4
+    transferAmount: 0.3
   - type: InputMover
   - type: MobMover
   - type: HTN
@@ -102,7 +102,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      50: Dead
+      25: Dead
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
@@ -140,6 +140,9 @@
     sprite: _Goobstation/Wraith/Mobs/rat.rsi
     layers:
     - state: mediumRat
+  - type: MeleeChemicalInjector
+    solution: melee
+    transferAmount: 0.5
   - type: MeleeWeapon
     altDisarm: false
     angle: 0
@@ -153,7 +156,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      80: Dead
+      50: Dead
 
 - type: entity
   id: MobPlagueRatLarge
@@ -190,13 +193,13 @@
       path: /Audio/_Goobstation/Wraith/Attack/Flesh_Tear_2.ogg
     damage:
       types:
-        Slash: 10
+        Slash: 5
         Blunt: 5
         Structural: 50
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      80: Dead
 
 - type: entity
   id: MobMadRat
@@ -249,7 +252,7 @@
           Quantity: 100
   - type: MeleeChemicalInjector
     solution: melee
-    transferAmount: 4
+    transferAmount: 0.15
   - type: InputMover
   - type: MobMover
   - type: HTN
@@ -265,7 +268,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 30
+          damage: 10
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
