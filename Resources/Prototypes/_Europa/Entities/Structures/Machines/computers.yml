@@ -26,7 +26,7 @@
     color: "#c94242"
 
 - type: entity
-  parent: ComputerComms
+  parent: BaseComputer
   id: InteqComputerComms
   name: inteq communications computer
   description: A computer capable of communicating with everyone in the sector via the orbital ship. Use it to announce your intentions.
@@ -60,3 +60,13 @@
     radius: 1.5
     energy: 1.6
     color: "#f71713"
+  - type: ActivatableUI
+    key: enum.CommunicationsConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CommunicationsConsoleUiKey.Key:
+        type: CommunicationsConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: DeviceNetwork
+    transmitFrequencyId: ShuttleTimer
