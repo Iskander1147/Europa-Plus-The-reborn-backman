@@ -205,6 +205,7 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
     - Inorganic
   - type: ShowHungerIcons
   - type: ShowThirstIcons

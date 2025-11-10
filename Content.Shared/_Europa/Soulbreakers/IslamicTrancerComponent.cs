@@ -16,7 +16,7 @@ public sealed partial class IslamicTrancerComponent : Component
     public EntityUid? AllahActionEntity;
 
     private static readonly ProtoId<SoundCollectionPrototype> PraiseAllahSounds = new("PraiseAllah");
-    public SoundSpecifier PraiseAllahSound = new SoundCollectionSpecifier(PraiseAllahSounds, AudioParams.Default.WithVariation(0.1f));
+    public SoundSpecifier PraiseAllahSound = new SoundCollectionSpecifier(PraiseAllahSounds, AudioParams.Default.WithVariation(0.2f));
 }
 
 public sealed partial class PraiseAllahEvent : InstantActionEvent

@@ -77,9 +77,11 @@
     - type: ShowHealthBars
       damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     - type: ShowHealthIcons
       damageContainers:
       - Biological
+      - BiologicalSoulbreaker
 
 - type: entity
   parent: BasicCyberneticEyes

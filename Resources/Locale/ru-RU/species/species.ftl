@@ -10,3 +10,4 @@ species-name-moth = Мотылёк
 species-name-skeleton = Скелет
 species-name-vox = Вокс
 snail-hurt-by-salt-popup = Солевой раствор жжёт как кислота!
+species-name-soulbreaker = Душелом

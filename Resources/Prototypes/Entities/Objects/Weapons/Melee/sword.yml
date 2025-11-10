@@ -210,12 +210,16 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Item
+    size: Small
     storedSprite:
       state: storage
       sprite: Objects/Weapons/Melee/machete.rsi
     shape:
     - 0,0,0,2
   - type: DisarmMalus
+  - type: Clothing
+    slots:
+    - belt
 
 #Longswords
 - type: entity

@@ -42,6 +42,7 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
   - type: ClothingGrantComponent
     component:
     - type: FlashVulnerable
@@ -65,6 +66,7 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
   - type: ShowSyndicateIcons
 
 # Thermal Vision Goggles

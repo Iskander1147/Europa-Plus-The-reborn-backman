@@ -43,7 +43,7 @@ public abstract class SharedIslamicTrancerSystem : EntitySystem
             _audioSystem.PlayPvs(component.PraiseAllahSound, args.Performer);
         }
 
-        _chatSystem.TrySendInGameICMessage(uid, "praises Allah!", InGameICChatType.Emote, false);
+        _chatSystem.TrySendInGameICMessage(uid, "восхваляет Аллаха!", InGameICChatType.Emote, false);
 
         args.Handled = true;
     }

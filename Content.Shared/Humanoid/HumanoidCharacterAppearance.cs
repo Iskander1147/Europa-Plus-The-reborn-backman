@@ -127,6 +127,7 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
             HumanoidSkinColor.TintedHues => Humanoid.SkinColor.TintedHues(speciesPrototype.DefaultSkinTone),
             HumanoidSkinColor.VoxFeathers => Humanoid.SkinColor.ClosestVoxColor(speciesPrototype.DefaultSkinTone),
             HumanoidSkinColor.AnimalFur => Humanoid.SkinColor.ClosestAnimalFurColor(speciesPrototype.DefaultSkinTone), // Goobstation - Tajaran
+            HumanoidSkinColor.SoulbreakerToned => Humanoid.SkinColor.ClosestSoulbreakerColor(speciesPrototype.DefaultSkinTone),
             _ => Humanoid.SkinColor.ValidHumanSkinTone,
         };
 
@@ -193,6 +194,9 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
                 break;
             case HumanoidSkinColor.AnimalFur:
                 newSkinColor = Humanoid.SkinColor.ProportionalAnimalFurColor(newSkinColor); // Goobstation - Tajaran
+                break;
+            case HumanoidSkinColor.SoulbreakerToned:
+                newSkinColor = Humanoid.SkinColor.ProportionalSoulbreakerColor(newSkinColor);
                 break;
         }
 

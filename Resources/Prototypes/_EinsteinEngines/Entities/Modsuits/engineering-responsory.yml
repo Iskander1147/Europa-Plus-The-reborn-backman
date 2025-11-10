@@ -93,6 +93,7 @@
     - type: ShowHealthBars
       damageContainers:
         - Biological
+        - BiologicalSoulbreaker
         - Inorganic
         - Silicon
     - type: PointLight

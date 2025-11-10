@@ -209,9 +209,11 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
   - type: Sanitized # Shitmed
   - type: SurgeryTarget # Shitmed
   - type: SurgeryIgnoreClothing

@@ -13,7 +13,7 @@
     showControl: true
     showExamine: true
     broadcastAudio: true
-  - type: Tag # goob edit
+  - type: Tag
     tags:
     - GeigerCounter
   - type: Clothing
@@ -21,3 +21,4 @@
     slots:
     - neck
     - belt
+    - idcard

@@ -1,3 +1,11 @@
 ﻿- type: font
   id: Supernatural
   path: /Fonts/_Europa/supernatural.ttf
+
+- type: font
+  id: Eris
+  path: /Fonts/_Europa/eris.ttf
+
+- type: font
+  id: BulanRamadhan
+  path: /Fonts/_Europa/BulanRamadhan.ttf

@@ -294,6 +294,7 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
     - Inorganic
   - type: ShowSyndicateIcons
 
@@ -310,6 +311,7 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
     - Inorganic
   - type: ShowHungerIcons
   - type: ShowThirstIcons
@@ -348,6 +350,7 @@
     damageContainers:
     - Biological
     - SiliconRadiation # Goobstation - IPCs
+    - BiologicalSoulbreaker
   - type: ShowJobIcons # Goob
   - type: ShowMindShieldIcons # Goob
   - type: Tag

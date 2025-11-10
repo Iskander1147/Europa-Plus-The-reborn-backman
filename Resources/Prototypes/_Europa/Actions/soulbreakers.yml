@@ -1,11 +1,11 @@
 - type: entity
   parent: BaseAction
   id: ActionPraiseAllah
-  name: Praise Allah
+  name: Восхвалять Аллаха
   components:
   - type: Action
     itemIconStyle: NoItem
-    useDelay: 5
+    useDelay: 2
     icon: { sprite: Interface/Actions/voice-mask.rsi, state: icon }
   - type: InstantAction
     event: !type:PraiseAllahEvent

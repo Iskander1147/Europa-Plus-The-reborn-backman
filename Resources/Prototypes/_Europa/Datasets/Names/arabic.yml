@@ -1,0 +1,17 @@
+- type: localizedDataset
+  id: NamesFirstMaleArabic
+  values:
+    prefix: names-first-male-arabic-dataset-
+    count: 50
+
+- type: localizedDataset
+  id: NamesFirstFemaleArabic  
+  values:
+    prefix: names-first-female-arabic-dataset-
+    count: 50
+
+- type: localizedDataset
+  id: NamesLastArabic
+  values:
+    prefix: names-last-arabic-dataset-
+    count: 40

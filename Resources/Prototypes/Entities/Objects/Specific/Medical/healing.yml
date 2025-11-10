@@ -102,6 +102,7 @@
   - type: Healing
     damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     damage:
       types:
         Heat: -10
@@ -159,6 +160,7 @@
   - type: Healing
     damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     damage:
       types:
         Heat: -15
@@ -216,6 +218,7 @@
   - type: Healing
     damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     damage:
       groups:
         Brute: -30 # was 5 (-15 Brute) for each, Buffed due to limb damage changes (Goobstation)
@@ -271,6 +274,7 @@
   - type: Healing
     damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     damage:
       groups:
         Brute: -45 # was 10 for each, Buffed due to Limb Damage Changes (Goobstation)
@@ -342,6 +346,7 @@
   - type: Healing
     damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     damage:
       types:
         Bloodloss: -2.5 #lowers bloodloss damage, was .5 buffed due to Limb Damage Changes (Goobstation)
@@ -416,6 +421,7 @@
   - type: Healing
     damageContainers:
       - Biological
+      - BiologicalSoulbreaker
     damage:
       types:
         Slash: -10 # Was 5
@@ -480,6 +486,7 @@
   - type: Healing
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
     damage:
       groups: # these are all split across multiple types
         Brute: -150

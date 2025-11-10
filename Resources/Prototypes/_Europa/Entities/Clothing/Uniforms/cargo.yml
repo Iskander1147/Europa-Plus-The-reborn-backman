@@ -1,6 +1,6 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseMajorContraband ]
-  id: CargoUniformHiveWorld
+  id: SoulbreakerCargoUniform
   name: cargo uniform
   description: Standard hive world cargo uniform.
   components:

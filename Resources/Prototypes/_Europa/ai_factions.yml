@@ -1,6 +1,7 @@
 ﻿- type: npcFaction
   id: InteQ
   hostile:
+  - Soulbreakers
   - Dragon
   - SimpleHostile
   - AllHostile
@@ -18,6 +19,7 @@
 - type: npcFaction
   id: InteQHostile # Like AllHostile, but without "InteQ" in hostile
   hostile:
+  - Soulbreakers
   - NanoTrasen
   - Dragon
   - Mouse
@@ -40,3 +42,27 @@
   # Goob-End-Factions
   friendly:
   - InteQ
+
+- type: npcFaction
+  id: Soulbreakers
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - AllHostile
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Changeling
+  - Heretic
+  - Blob
+  - Wizard
+  - PirateFaction
+  - Shadowling
+  - InteQ
+  - InteQHostile

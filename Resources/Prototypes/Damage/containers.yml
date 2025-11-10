@@ -107,3 +107,10 @@
   - Genetic
   supportedTypes: # Goobstation
   - Holy
+
+- type: damageContainer
+  id: BiologicalSoulbreaker
+  supportedGroups:
+  - Brute
+  - Burn
+  - Airloss

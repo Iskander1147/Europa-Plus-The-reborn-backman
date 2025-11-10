@@ -36,6 +36,67 @@ public static class SkinColor
     public const float MaxAnimalFurValue = 100f / 100;
     // Goobstation Section End - Tajaran
 
+    // Europa Edit Start
+    public const float MinSoulbreakerHue = 20f / 360;      // От желтовато-коричневого
+    public const float MaxSoulbreakerHue = 35f / 360;      // До темно-коричневого
+    public const float MinSoulbreakerSaturation = 40f / 100; // Минимальная насыщенность
+    public const float MaxSoulbreakerSaturation = 70f / 100; // Максимальная насыщенность
+    public const float MinSoulbreakerValue = 20f / 100;     // Минимальная яркость (темные тона)
+    public const float MaxSoulbreakerValue = 50f / 100;     // Максимальная яркость
+
+    public static Color ValidSoulbreakerSkinTone => Color.FromHsv(new Vector4(0.08f, 0.5f, 0.35f, 1f));
+
+    public static Color SoulbreakerSkinTone(int tone)
+    {
+        tone = Math.Clamp(tone, 0, 100);
+
+        // 0 - светлый смуглый, 100 - очень темный
+        var hue = MathHelper.Lerp(MinSoulbreakerHue, MaxSoulbreakerHue, tone / 100f);
+        var sat = MathHelper.Lerp(MinSoulbreakerSaturation, MaxSoulbreakerSaturation, tone / 100f);
+        var val = MathHelper.Lerp(MaxSoulbreakerValue, MinSoulbreakerValue, tone / 100f);
+
+        return Color.FromHsv(new Vector4(hue, sat, val, 1.0f));
+    }
+
+    public static bool VerifySoulbreakerSkinTone(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        if (hsv.X < MinSoulbreakerHue || hsv.X > MaxSoulbreakerHue)
+            return false;
+
+        if (hsv.Y < MinSoulbreakerSaturation || hsv.Y > MaxSoulbreakerSaturation)
+            return false;
+
+        if (hsv.Z < MinSoulbreakerValue || hsv.Z > MaxSoulbreakerValue)
+            return false;
+
+        return true;
+    }
+
+    public static Color ClosestSoulbreakerColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        hsv.X = Math.Clamp(hsv.X, MinSoulbreakerHue, MaxSoulbreakerHue);
+        hsv.Y = Math.Clamp(hsv.Y, MinSoulbreakerSaturation, MaxSoulbreakerSaturation);
+        hsv.Z = Math.Clamp(hsv.Z, MinSoulbreakerValue, MaxSoulbreakerValue);
+
+        return Color.FromHsv(hsv);
+    }
+
+    public static Color ProportionalSoulbreakerColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        hsv.X = hsv.X * (MaxSoulbreakerHue - MinSoulbreakerHue) + MinSoulbreakerHue;
+        hsv.Y = hsv.Y * (MaxSoulbreakerSaturation - MinSoulbreakerSaturation) + MinSoulbreakerSaturation;
+        hsv.Z = hsv.Z * (MaxSoulbreakerValue - MinSoulbreakerValue) + MinSoulbreakerValue;
+
+        return Color.FromHsv(hsv);
+    }
+    // Europa Edit End
+
     public static Color ValidHumanSkinTone => Color.FromHsv(new Vector4(0.07f, 0.2f, 1f, 1f));
 
     /// <summary>
@@ -310,6 +371,7 @@ public static class SkinColor
             HumanoidSkinColor.Hues => VerifyHues(color),
             HumanoidSkinColor.VoxFeathers => VerifyVoxFeathers(color),
             HumanoidSkinColor.AnimalFur => VerifyAnimalFur(color),
+            HumanoidSkinColor.SoulbreakerToned => VerifySoulbreakerSkinTone(color),
             _ => false,
         };
     }
@@ -323,6 +385,7 @@ public static class SkinColor
             HumanoidSkinColor.Hues => MakeHueValid(color),
             HumanoidSkinColor.VoxFeathers => ClosestVoxColor(color),
             HumanoidSkinColor.AnimalFur => ClosestAnimalFurColor(color),
+            HumanoidSkinColor.SoulbreakerToned => ClosestSoulbreakerColor(color),
             _ => color
         };
     }
@@ -336,4 +399,5 @@ public enum HumanoidSkinColor : byte
     TintedHues, //This gives a color tint to a humanoid's skin (10% saturation with full hue range).
     NoColor, // Goob #1161
     AnimalFur, // Goob - Tajaran
+    SoulbreakerToned, // Europa Plus Edit
 }

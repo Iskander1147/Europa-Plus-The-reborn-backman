@@ -18,6 +18,7 @@
     slots:
     - neck
     - belt
+    - idcard
   - type: Emag
     emagType: All
   - type: LimitedCharges

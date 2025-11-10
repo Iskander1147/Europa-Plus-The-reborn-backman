@@ -579,9 +579,11 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+    - BiologicalSoulbreaker
   - type: Advertise
     pack: MedibotAds
   - type: Vocalizer

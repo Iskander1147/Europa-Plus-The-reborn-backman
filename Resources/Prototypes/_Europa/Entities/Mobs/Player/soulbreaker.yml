@@ -1,0 +1,216 @@
+- type: entity
+  parent:
+  - MobBloodstream
+  - MobRespirator
+  - MobAtmosStandard
+  - MobFlammable
+  - BaseMobSpecies
+  abstract: true
+  id: MobBaseSoulbreaker
+  components:
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.5
+        Heat: 0.1
+  - type: Fingerprint
+  - type: Blindable
+  - type: Temperature
+    heatDamageThreshold: 325
+    coldDamageThreshold: 260
+    currentTemperature: 310.15
+    specificHeat: 42
+    coldDamage:
+      types:
+        Cold: 0.025
+    heatDamage:
+      types:
+        Heat: 0.05
+  - type: TemperatureSpeed
+    thresholds:
+      293: 0.9
+      280: 0.8
+      260: 0.7
+  - type: ThermalRegulator
+    metabolismHeat: 800
+    radiatedHeat: 100
+    implicitHeatRegulation: 500
+    sweatHeatRegulation: 2000
+    shiveringHeatRegulation: 2000
+    normalBodyTemperature: 310.15
+    thermalRegulationTemperatureThreshold: 2
+  - type: Perishable
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatBacon
+      amount: 5
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.1
+    damageRecovery:
+      types:
+        Asphyxiation: -5.0
+  - type: FireVisuals
+    alternateState: Standing
+  - type: CPRTraining
+  - type: BloodstreamAffectedByMass
+    power: 0.6
+  - type: FlightAffectedByScale
+  - type: StunVisuals
+# damageable
+  - type: Damageable
+    damageContainer: BiologicalSoulbreaker
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 500
+      behaviors:
+      - !type:GibBehavior { }
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 2.5
+# thresholds
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      175: Critical
+      250: Dead
+# stamina
+  - type: Stamina
+    stunTime: 3
+    staminaOnShove: 4
+    critThreshold: 200
+# fixture
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 1000
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+# melee weapon
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 10
+# flammable
+  - type: Flammable
+    damage:
+      types:
+        Heat: 0.2
+# bloodstream
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0.2
+    bloodlossHealDamage:
+      types:
+        Bloodloss: -3
+# slow on damage
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 0.9
+      175: 0.8
+      225: 0.7
+# status
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown
+    - SlowedDown
+    - Stutter
+    - Electrocution
+    - SlurredSpeech
+    - PressureImmunity
+    - Muted
+    - TemporaryBlindness
+    - StaminaModifier
+    - Flashed
+    - RadiationProtection
+    - Adrenaline
+# language
+  - type: LanguageKnowledge
+    speaks:
+    - Soulbreakers
+    - SolCommon
+    understands:
+    - Soulbreakers
+    - SolCommon
+# humanoind things
+  - type: Hunger
+  - type: Icon
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Thirst
+  - type: HumanoidAppearance
+    species: Soulbreaker
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+  - type: Sprinter
+    staminaDrainRate: 4
+    sprintSpeedMultiplier: 2
+    timeBetweenSprints: 1
+# appearance
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirstMaleArabic
+    - NamesLastArabic
+    nameFormat: name-format-standard
+# shit
+#  - type: Consciousness
+#    cap: 160
+#    threshold: 150
+#    multiplier: 0.5
+# faction
+  - type: NpcFactionMember
+    factions:
+    - Soulbreakers
+# lol
+  - type: IslamicTrancer
+  - type: SoulbreakerAccent
+
+- type: entity
+  parent:
+  - MobBaseSoulbreaker
+  id: MobSoulbreakerBasic
+  name: soulbreaker basic gear
+  components:
+  # loadout
+  - type: Loadout
+    prototypes:
+    - SoulbreakerBasicGear
+
+- type: entity
+  parent:
+  - MobBaseSoulbreaker
+  id: MobSoulbreakerFull
+  name: soulbreaker full gear
+  components:
+  # loadout
+  - type: Loadout
+    prototypes:
+    - SoulbreakerFullGear

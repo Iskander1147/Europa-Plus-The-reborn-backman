@@ -1,0 +1,56 @@
+- type: startingGear
+  id: SoulbreakerBasicGear
+  equipment:
+    jumpsuit: SoulbreakerCargoUniform
+    back: ClothingBackpackMessenger
+    shoes: SoulbreakerBoots
+    id: SoulbreakerRingIDCard
+    ears: ClothingHeadsetSoulbreaker
+    gloves: ClothingHandsGlovesCombat
+    neck: SoulbreakerDosimeter
+  storage:
+    back:
+    - Crowbar
+    - FoodSnackNutribrick
+    - DrinkWaterBottleFull
+    - FireExtinguisher
+    - ClothingMaskGasMerc
+    - DoubleEmergencyOxygenTankFilled
+
+- type: startingGear
+  id: SoulbreakerFullGear
+  equipment:
+    jumpsuit: SoulbreakerCargoUniform
+    back: ClothingBackpackMessenger
+    shoes: SoulbreakerMagboots
+    id: SoulbreakerRingIDCard
+    ears: ClothingHeadsetSoulbreaker
+    gloves: SoulbreakerCombatGloves
+    neck: SoulbreakerDosimeter
+    outerClothing: SoulbreakerHardsuit
+    suitstorage: SoulbreakerStunRiffle
+    pocket1: SoulbreakerPhone
+    pocket2: DoubleEmergencyOxygenTankFilled
+    eyes: SoulbreakerClothingEyesNightVisionGoggles
+    mask: ClothingMaskGasMerc
+    belt: Machete
+  storage:
+    back:
+    - FoodSnackNutribrick
+    - DrinkWaterBottleFull
+    - FireExtinguisher
+    - SoulbreakerHandheldHealthAnalyzerUnpowered
+    - SoulbreakerCollar
+    - SoulbreakerCollar
+    - SoulbreakerCollar
+    - SoulbreakerCollar
+    - SoulbreakerHandcuffs
+    - SoulbreakerHandcuffs
+    - SoulbreakerHandcuffs
+    - SoulbreakerHandcuffs
+    - MedicatedSuture
+    - RegenerativeMesh
+    - AmbuzolPlusMedipen
+    - AdvancedCombatMedipen
+    - RegenerativeMesh
+    - MedicatedSuture
