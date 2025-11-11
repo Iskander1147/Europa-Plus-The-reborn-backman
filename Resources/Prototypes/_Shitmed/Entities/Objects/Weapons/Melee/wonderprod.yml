@@ -89,7 +89,7 @@
         components:
         - type: MeleeWeapon
           wideAnimationRotation: -135
-          attackRate: 0.5
+          attackRate: 0.1
           damage:
             types:
               Shock: 0
@@ -132,4 +132,4 @@
           animation: WeaponArcThrust
           damage:
             types:
-              Heat: 30
+              Heat: 20
