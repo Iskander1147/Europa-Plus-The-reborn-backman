@@ -7,6 +7,9 @@
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
     state: mag1
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
 
 - type: entity
   parent: PaintingBase
@@ -17,6 +20,9 @@
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
     state: mag2
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
 
 - type: entity
   parent: PaintingBase
@@ -27,3 +33,97 @@
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
     state: mag3
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker4
+  name: soulbreakers poster
+  description: Suffer.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: postersb
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker5
+  name: soulbreakers poster
+  description: Suffer.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: postersb2
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker6
+  name: allahu akbar
+  description: Pray to the Unmerciful!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: a
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker7
+  name: soulbreaker ornament
+  description: Cool ornament.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: b
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker8
+  name: soulbreaker mosaic
+  description: Cool mosaic.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: mosaic_ov
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker9
+  name: soulbreaker mosaic
+  description: Cool mosaic.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: mosaic
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker10
+  name: soulbreaker prayers
+  description: Prayers to the Unmerciful.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
+    state: mosaic
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

@@ -36,5 +36,5 @@ public sealed partial class CCVars
         CVarDef.Create("modkit.dupes_enabled", true, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<int> LavalandEnabledOnline =
-            CVarDef.Create("lavaland.enabled_online", 40, CVar.SERVERONLY | CVar.ARCHIVE);
+            CVarDef.Create("lavaland.enabled_online", 30, CVar.SERVERONLY | CVar.ARCHIVE);
 }

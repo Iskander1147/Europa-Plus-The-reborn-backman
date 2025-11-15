@@ -14,7 +14,7 @@
     state: ecross
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StructuralMetallic
   - type: Destructible
     thresholds:
     - trigger:

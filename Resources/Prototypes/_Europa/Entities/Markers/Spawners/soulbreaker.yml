@@ -1,0 +1,51 @@
+- type: entity
+  name: soulbreaker spawner
+  id: SoulbreakerSpawner
+  parent: BaseAntagSpawner
+  components:
+  - type: GhostRole
+    name: soulbreaker-ghost-role-name
+    description: roles-antag-soulbreaker-objective
+    mindRoles:
+    - MindRoleSoulbreaker
+    raffle:
+      settings: default
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 180000 # 50 hours
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 54000 # 15 hours
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: _Europa/Objects/Weapons/Guns/Battery/stun_riffle.rsi
+      state: icon
+
+- type: entity
+  name: soulbreaker assistant spawner
+  id: SoulbreakerAssistantSpawner
+  parent: BaseAntagSpawner
+  components:
+  - type: GhostRole
+    name: soulbreaker-assistant-ghost-role-name
+    description: roles-antag-soulbreaker-assistant-objective
+    mindRoles:
+    - MindRoleSoulbreakerAssistant
+    raffle:
+      settings: default
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 45000 # 12,5 hours
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 13500 # 3,75 hours
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: _Europa/Objects/Devices/collar.rsi
+      state: icon

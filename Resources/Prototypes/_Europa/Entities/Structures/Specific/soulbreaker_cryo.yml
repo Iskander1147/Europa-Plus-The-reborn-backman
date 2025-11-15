@@ -1,0 +1,68 @@
+- type: entity
+  id: SoulbreakerCryo
+  name: soulbreaker cryo
+  description: Brrr! It's freezing!
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Icon
+    sprite: _Europa/Structures/Specific/soulbreaker_cryo.rsi
+    state: cage
+  - type: Sprite
+    noRot: true
+    sprite: _Europa/Structures/Specific/soulbreaker_cryo.rsi
+    layers:
+    - state: cryochamber0
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: cryochamber0
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 350
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Pullable
+  - type: Tag
+    tags:
+    - Structure
+  - type: Structure
+  - type: EntityStorage
+    showContents: false
+    openSound:
+      path: /Audio/_Europa/Structures/cryo_open.ogg
+    closeSound:
+      path: /Audio/_Europa/Structures/cryo_lock.ogg
+    capacity: 1
+    openOnMove: false
+    occludesLight: false
+    airtight: true
+  - type: Appearance
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+  - type: EntityStorageVisuals
+    stateBaseClosed: cryochamber0
+    stateDoorClosed: cryochamber3
+  - type: PointLight
+    color: "#3a807f"
+    radius: 1.3
+    energy: 20
+  - type: Cryostorage
+  - type: UserInterface
+    interfaces:
+      enum.CryostorageUIKey.Key:
+        type: CryostorageBoundUserInterface
+  - type: ActivatableUI
+    key: enum.CryostorageUIKey.Key

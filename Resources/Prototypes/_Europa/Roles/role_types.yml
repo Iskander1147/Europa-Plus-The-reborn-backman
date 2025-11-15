@@ -7,3 +7,8 @@
   id: GhostRole
   name: role-type-ghost-role-name
   color: '#FF9D8A'
+
+- type: roleType
+  id: Soulbreaker
+  name: role-type-soulbreaker-name
+  color: '#ff7b08'

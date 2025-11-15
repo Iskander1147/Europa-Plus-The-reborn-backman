@@ -50,4 +50,4 @@ preset-no-one-ready = Не удалось запустить режим { $prese
 game-run-level-PreRoundLobby = Предраундовое лобби
 game-run-level-InRound = В раунде
 game-run-level-PostRound = После раунда
-game-ticker-player-fuck-this-shit = Ошибка при спавне. Пожалуйста, сообщите в баг-репорт. Это временное решение для запуска раунда.
+game-ticker-player-fuck-this-shit = Выбранная вами роль недоступна или была занята кем-то другим.

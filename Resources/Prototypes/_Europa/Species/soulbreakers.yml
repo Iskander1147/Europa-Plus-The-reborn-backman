@@ -2,7 +2,7 @@
   id: Soulbreaker
   name: species-name-soulbreaker
   roundStart: false
-  prototype: MobSoulbreaker
+  prototype: MobBaseSoulbreaker
   sprites: MobHumanSprites
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobHumanDummy

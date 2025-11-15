@@ -191,6 +191,9 @@
     shape:
     - 0,0,0,2
   - type: DisarmMalus
+  - type: Clothing
+    slots:
+    - belt
 
 - type: entity
   name: machete

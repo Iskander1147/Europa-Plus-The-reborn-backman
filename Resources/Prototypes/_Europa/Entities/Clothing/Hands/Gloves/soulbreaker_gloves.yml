@@ -31,3 +31,6 @@
     damage: 30
   - type: Tag
     tags: []
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

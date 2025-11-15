@@ -1,0 +1,74 @@
+- type: entity
+  id: SoulbreakerTable1
+  parent: BaseStructure
+  name: soulbreaker table
+  description: A square piece of metal standing on four metal legs.
+  components:
+  - type: Transform
+    noRot: true
+  - type: Animateable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+        - BulletImpassable
+  - type: SpriteFade
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_tables.rsi
+    state: smalltable
+    noRot: true
+  - type: Climbable
+  - type: Bonkable
+    bonkDamage:
+      types:
+        Blunt: 4
+  - type: Clickable
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHull
+  - type: Tag
+    tags:
+    - ForceFixRotations
+  - type: RequireProjectileTarget
+    ignoreThrow: true
+
+- type: entity
+  id: SoulbreakerTable2
+  parent: SoulbreakerTable1
+  name: soulbreaker table
+  description: A square piece of metal standing on four metal legs.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_tables.rsi
+    state: stable
+
+- type: entity
+  id: SoulbreakerTable3
+  parent: SoulbreakerTable1
+  name: soulbreaker table
+  description: A square piece of metal standing on four metal legs.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_tables.rsi
+    state: table6
+
+- type: entity
+  id: SoulbreakerTable4
+  parent: SoulbreakerTable1
+  name: soulbreaker table
+  description: A square piece of metal standing on four metal legs.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_tables.rsi
+    state: wood_table

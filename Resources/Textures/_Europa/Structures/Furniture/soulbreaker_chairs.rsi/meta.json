@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "license": "Closed Party",
+  "copyright": "Randy Sandy",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "bchair",
+      "directions": 4
+    },
+    {
+      "name": "darkchair",
+      "directions": 4
+    },
+    {
+      "name": "fancychair",
+      "directions": 4
+    },
+    {
+      "name": "fancychair2",
+      "directions": 4
+    },
+    {
+      "name": "genericchair",
+      "directions": 4
+    },
+    {
+      "name": "genericchair2",
+      "directions": 4
+    },
+    {
+      "name": "usurer"
+    }
+  ]
+}

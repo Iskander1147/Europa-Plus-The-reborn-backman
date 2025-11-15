@@ -63,6 +63,9 @@ public sealed partial class GameRuleComponent : Component
     /// </summary>
     [DataField]
     public float? ChaosScore = null;
+
+    [DataField]
+    public string? Name;
 }
 
 /// <summary>

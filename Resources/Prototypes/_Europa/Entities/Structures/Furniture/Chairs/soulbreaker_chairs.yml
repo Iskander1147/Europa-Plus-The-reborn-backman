@@ -1,0 +1,62 @@
+- type: entity
+  id: SoulbreakerChair1
+  parent: ChairBase
+  name: soulbreaker chair
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: bchair
+
+- type: entity
+  id: SoulbreakerChair2
+  parent: ChairBase
+  name: soulbreaker chair
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: darkchair
+
+- type: entity
+  id: SoulbreakerChair3
+  parent: ChairBase
+  name: soulbreaker chair
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: fancychair
+
+- type: entity
+  id: SoulbreakerChair4
+  parent: ChairBase
+  name: soulbreaker chair
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: fancychair2
+
+- type: entity
+  id: SoulbreakerChair5
+  parent: ChairBase
+  name: soulbreaker chair
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: genericchair
+
+- type: entity
+  id: SoulbreakerChair6
+  parent: ChairBase
+  name: soulbreaker chair
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: genericchair2
+
+- type: entity
+  id: SoulbreakerPilotSeat
+  parent: ChairBase
+  name: soulbreaker pilot seat
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_chairs.rsi
+    state: usurer

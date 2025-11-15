@@ -1,0 +1,117 @@
+- type: entity
+  parent: BaseGameRule
+  id: Soulbreakers
+  components:
+  - type: StationEvent
+    occursDuringRoundEnd: false
+    earliestStart: 60
+    reoccurrenceDelay: 60
+    weight: 0.01
+    minimumPlayers: 25
+    duration: null
+    chaos:
+      Mess: 100
+      Hostile: 100
+      Combat: 100
+      Death: 100
+      Medical: 100
+    eventType: Chaotic
+  - type: GameRule
+    chaosScore: 1000
+  - type: SoulbreakersRule
+  - type: RuleGrids
+  - type: LoadMapRule
+    mapPath: /Maps/_Shitmed/Shuttles/ShuttleEvent/duo_abductor_shuttle.yml
+  - type: AntagObjectives
+    objectives:
+    - SoulbreakerObjective
+  - type: AntagLoadProfileRule
+    speciesHardOverride: Soulbreaker
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SoulbreakerSpawner
+      min: 2
+      max: 6
+      playerRatio: 12
+      pickPlayer: true
+      startingGear: SoulbreakerFullGear
+      lateJoinAdditional: true
+      briefing:
+        text: soulbreakers-soulbreaker-role-greeting
+        sound: /Audio/_Europa/Announcements/azan.ogg
+      components:
+      - type: GlobalAntagonist
+        antagonistPrototype: globalAntagonistSoulbreaker
+      - type: GhostRole
+        name: soulbreaker-ghost-role-name
+        description: roles-antag-soulbreaker-objective
+        mindRoles:
+        - MindRoleSoulbreaker
+        raffle:
+          settings: default
+        requirements:
+        - !type:DepartmentTimeRequirement
+          department: Security
+          time: 180000 # 50 hours
+        - !type:DepartmentTimeRequirement
+          department: Medical
+          time: 54000 # 15 hours
+      - type: GhostTakeoverAvailable
+      - type: NpcFactionMember
+        factions:
+        - Soulbreakers
+      - type: RandomMetadata
+        nameSegments:
+        - NamesFirstMaleArabic
+        - NamesLastArabic
+        nameFormat: name-format-standard
+      - type: Tag
+        tags:
+        - CanPilot
+        - FootstepSound
+        - DoorBumpOpener
+      - type: SurgerySpeedModifier
+        speedModifier: 2
+    - spawnerPrototype: SoulbreakerAssistantSpawner
+      min: 1
+      max: 2
+      playerRatio: 30
+      pickPlayer: true
+      startingGear: SoulbreakerBasicGear
+      lateJoinAdditional: true
+      briefing:
+        text: soulbreakers-soulbreaker-assistant-role-greeting
+        sound: /Audio/_Europa/Announcements/azan.ogg
+      components:
+      - type: GlobalAntagonist
+        antagonistPrototype: globalAntagonistSoulbreaker
+      - type: GhostRole
+        name: soulbreaker-assistant-ghost-role-name
+        description: roles-antag-soulbreaker-assistant-objective
+        mindRoles:
+        - MindRoleSoulbreaker
+        raffle:
+          settings: default
+        requirements:
+        - !type:DepartmentTimeRequirement
+          department: Security
+          time: 45000 # 12,5 hours
+        - !type:DepartmentTimeRequirement
+          department: Medical
+          time: 13500 # 3,75 hours
+      - type: GhostTakeoverAvailable
+      - type: NpcFactionMember
+        factions:
+        - Soulbreakers
+      - type: RandomMetadata
+        nameSegments:
+        - NamesFirstMaleArabic
+        - NamesLastArabic
+        nameFormat: name-format-standard
+      - type: Tag
+        tags:
+        - CanPilot
+        - FootstepSound
+        - DoorBumpOpener
+      - type: SurgerySpeedModifier
+        speedModifier: 5

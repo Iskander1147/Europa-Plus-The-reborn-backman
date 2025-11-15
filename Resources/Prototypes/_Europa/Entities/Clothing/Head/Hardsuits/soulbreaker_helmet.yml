@@ -42,3 +42,6 @@
     damageCoefficient: 0.1
   - type: ExplosionResistance
     damageCoefficient: 0.1
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

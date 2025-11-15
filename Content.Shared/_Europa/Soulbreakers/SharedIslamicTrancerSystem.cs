@@ -16,14 +16,14 @@ public abstract class SharedIslamicTrancerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<IslamicTrancerComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<IslamicTrancerComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<IslamicTrancerComponent, ComponentRemove>(OnComponentRemoved);
 
 
         SubscribeLocalEvent<IslamicTrancerComponent, PraiseAllahEvent>(OnPraiseAllah);
     }
 
-    private void OnComponentInit(EntityUid uid, IslamicTrancerComponent component, ComponentInit args)
+    private void OnMapInit(EntityUid uid, IslamicTrancerComponent component, MapInitEvent args)
     {
         _actionsSystem.AddAction(uid, ref component.AllahActionEntity, component.AllahAction);
     }

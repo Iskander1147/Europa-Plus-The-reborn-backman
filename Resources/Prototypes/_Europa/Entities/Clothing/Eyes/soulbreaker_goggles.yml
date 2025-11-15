@@ -23,3 +23,6 @@
     damageContainers:
     - Biological
     - BiologicalSoulbreaker
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

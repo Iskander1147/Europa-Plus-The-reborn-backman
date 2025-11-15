@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseObjective
+  id: SoulbreakerObjective
+  components:
+  - type: Objective
+    difficulty: 1.5
+    issuer: objective-issuer-soulbreakers
+  - type: RoleplayObjective
+  - type: RoleRequirement
+    roles:
+    - Soulbreaker

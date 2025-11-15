@@ -1,0 +1,23 @@
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSoulbreakerAssistant
+  name: soulbreaker assitant role
+  components:
+  - type: MindRole
+    antagPrototype: SoulbreakerAssistantAntag
+    exclusiveAntag: true
+    roleType: Soulbreaker
+    subtype: role-subtype-soulbreaker-assistant
+  - type: SoulbreakerAssistantRole
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSoulbreaker
+  name: soulbreaker role
+  components:
+  - type: MindRole
+    antagPrototype: SoulbreakerAntag
+    exclusiveAntag: true
+    roleType: Soulbreaker
+    subtype: role-subtype-soulbreaker
+  - type: SoulbreakerRole

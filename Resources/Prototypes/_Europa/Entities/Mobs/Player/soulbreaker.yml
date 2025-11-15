@@ -5,8 +5,8 @@
   - MobAtmosStandard
   - MobFlammable
   - BaseMobSpecies
-  abstract: true
   id: MobBaseSoulbreaker
+  categories: [ HideSpawnMenu ]
   components:
   - type: Barotrauma
     damage:
@@ -171,7 +171,7 @@
             state: jumpsuit-female
   - type: Sprinter
     staminaDrainRate: 4
-    sprintSpeedMultiplier: 2
+    sprintSpeedMultiplier: 2.5
     timeBetweenSprints: 1
 # appearance
   - type: RandomHumanoidAppearance
@@ -189,28 +189,75 @@
   - type: NpcFactionMember
     factions:
     - Soulbreakers
-# lol
+# scorcher.exe
   - type: IslamicTrancer
   - type: SoulbreakerAccent
+# guide
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+# tags
+  - type: Tag
+    tags:
+    - CannotSuicide
+# actions
+  - type: Actions
+  - type: ActionsContainer
 
 - type: entity
   parent:
   - MobBaseSoulbreaker
-  id: MobSoulbreakerBasic
+  id: MobSoulbreakerBasicGear
   name: soulbreaker basic gear
+  suffix: GhostRole
   components:
   # loadout
   - type: Loadout
     prototypes:
     - SoulbreakerBasicGear
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistSoulbreaker
+  - type: GhostRole
+    name: soulbreaker-assistant-ghost-role-name
+    description: roles-antag-soulbreaker-assistant-objective
+    mindRoles:
+    - MindRoleSoulbreaker
+    raffle:
+      settings: default
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 45000 # 12,5 hours
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 13500 # 3,75 hours
+  - type: GhostTakeoverAvailable
+  - type: SoulbreakerAssistantRole
 
 - type: entity
   parent:
   - MobBaseSoulbreaker
-  id: MobSoulbreakerFull
+  id: MobSoulbreakerFullGear
   name: soulbreaker full gear
+  suffix: GhostRole
   components:
   # loadout
   - type: Loadout
     prototypes:
     - SoulbreakerFullGear
+  - type: GhostRole
+    name: soulbreaker-ghost-role-name
+    description: roles-antag-soulbreaker-objective
+    mindRoles:
+    - MindRoleSoulbreaker
+    raffle:
+      settings: default
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 180000 # 50 hours
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 54000 # 15 hours
+  - type: GhostTakeoverAvailable
+  - type: SoulbreakerRole

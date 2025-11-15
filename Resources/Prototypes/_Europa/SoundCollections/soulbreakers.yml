@@ -2,3 +2,10 @@
   id: PraiseAllah
   files:
   - /Audio/_Europa/Voice/Soulbreakers/allah1.ogg
+
+- type: soundCollection
+  id: GrillexHit
+  files:
+  - /Audio/_Europa/Structures/n_grille_hit.ogg
+  - /Audio/_Europa/Structures/n_grille_hit2.ogg
+  - /Audio/_Europa/Structures/n_grille_hit3.ogg

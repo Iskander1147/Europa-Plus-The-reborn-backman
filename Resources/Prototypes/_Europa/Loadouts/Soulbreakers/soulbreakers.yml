@@ -33,7 +33,7 @@
     pocket2: DoubleEmergencyOxygenTankFilled
     eyes: SoulbreakerClothingEyesNightVisionGoggles
     mask: ClothingMaskGasMerc
-    belt: Machete
+    belt: Cutlass
   storage:
     back:
     - FoodSnackNutribrick

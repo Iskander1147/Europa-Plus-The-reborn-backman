@@ -1,0 +1,29 @@
+- type: entity
+  id: SoulbreakerMirror
+  name: soulbreaker mirror
+  description: Death in reflection.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: WallMount
+  - type: Sprite
+    sprite: _Europa/Structures/Furniture/soulbreaker_mirror.rsi
+    state: mirror
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Transform
+    anchored: true
+  - type: WizardMirror
+    allowedSpecies:
+    - Soulbreaker
+    - Human
+    - Dwarf
+    - BananaMen
+    - Monkey
+  - type: ActivatableUI
+    key: enum.WizardMirrorUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.WizardMirrorUiKey.Key:
+        type: WizardMirrorBoundUserInterface

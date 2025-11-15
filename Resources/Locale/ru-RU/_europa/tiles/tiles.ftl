@@ -7,3 +7,9 @@ tiles-white-floor-pavement-vertical-alt = белое стальное верти
 tiles-dark-floor-herringbone-alt = тёмные стальные плиты ёлочкой (Альтернативное)
 tiles-steel-floor-herringbone-alt = стальные плиты ёлочкой (Альтернативное)
 tiles-white-floor-herringbone-alt = белые стальные плиты ёлочкой (Альтернативное)
+
+tiles-soulbreakers-1 = красная плитка (Обычная)
+tiles-soulbreakers-2 = красная плитка (Покорёжено)
+tiles-soulbreakers-3 = тёмная плитка (Новая)
+tiles-soulbreakers-4 = тёмная плитка (Обычная)
+tiles-soulbreakers-5 = тёмная плитка (Покорёжено)

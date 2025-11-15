@@ -47,6 +47,10 @@
   - type: ClothingGrantComponent
     component:
     - type: Pacified
-    - type: Muted
+    - type: SoulbreakerEnslavedRole
+#    - type: Muted
     - type: BlockMovement
       blockInteraction: true
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

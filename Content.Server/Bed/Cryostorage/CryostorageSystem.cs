@@ -55,6 +55,7 @@ using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationRecords;
 using Content.Server.StationRecords.Systems;
+using Content.Server.Storage.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Bed.Cryostorage;
 using Content.Shared.Chat;
@@ -63,7 +64,9 @@ using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.StationRecords;
+using Content.Shared.Storage.Components;
 using Content.Shared.UserInterface;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
@@ -95,11 +98,14 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private   readonly MobStateSystem _mobState = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<CryostorageComponent, StorageAfterCloseEvent>(OnStorageClosed);
 
         SubscribeLocalEvent<CryostorageComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpened);
         SubscribeLocalEvent<CryostorageComponent, CryostorageRemoveItemBuiMessage>(OnRemoveItemBuiMessage);
@@ -108,6 +114,37 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
         SubscribeLocalEvent<CryostorageContainedComponent, MindRemovedMessage>(OnMindRemoved);
 
         _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+    }
+
+    private void OnStorageClosed(Entity<CryostorageComponent> ent, ref StorageAfterCloseEvent args)
+    {
+        EntityStorageComponent? entityStorageComponent = null;
+
+        if (!Resolve(ent.Owner, ref entityStorageComponent))
+            return;
+
+        foreach (var entity in entityStorageComponent.Contents.ContainedEntities)
+        {
+            if (_mobState.IsIncapacitated(entity))
+                continue;
+
+            if (!HasComp<CanEnterCryostorageComponent>(entity) || !TryComp<MindContainerComponent>(entity, out var mindContainer))
+            {
+                continue;
+            }
+
+            if (Mind.TryGetMind(entity, out _, out var mindComp, mindContainer) &&
+                (mindComp.PreventSuicide || mindComp.PreventGhosting))
+            {
+                continue;
+            }
+
+            var containedComp = EnsureComp<CryostorageContainedComponent>(entity);
+            var delay = Mind.TryGetMind(entity, out _, out _) ? ent.Comp.GracePeriod : ent.Comp.NoMindGracePeriod;
+            containedComp.GracePeriodEndTime = Timing.CurTime + delay;
+            containedComp.Cryostorage = ent;
+            Dirty(entity, containedComp);
+        }
     }
 
     public override void Shutdown()

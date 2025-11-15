@@ -69,6 +69,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - MonkeyWearable
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
   - type: DamageOnInteractProtection

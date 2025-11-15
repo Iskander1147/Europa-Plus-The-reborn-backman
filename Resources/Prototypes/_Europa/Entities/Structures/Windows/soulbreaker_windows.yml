@@ -1,0 +1,179 @@
+- type: entity
+  id: SoulbreakerWindowDark
+  name: soulbreaker dark window
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/black_window.rsi
+    state: grille4
+  - type: Icon
+    sprite: _Europa/Structures/Windows/black_window.rsi
+    state: grille4
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+  - type: Appearance
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    damageDivisor: 3
+    trackAllDamage: true
+    damageOverlay:
+      sprite: Structures/Windows/cracks.rsi
+  - type: RadiationBlocker
+    resistance: 50
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb {}
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: ExaminableDamage
+    messages: WindowMessages
+  - type: Repairable
+  - type: Airtight
+  - type: InteractionPopup
+    interactSuccessString: comp-window-knock
+    messagePerceivedByOthers: comp-window-knock
+    interactSuccessSound:
+      path: /Audio/Effects/glass_knock.ogg
+  - type: BlockWeather
+  - type: WallMount
+    arc: 360
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - Window
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmack
+  - type: RCDDeconstructable
+    deconstructable: false
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindowGray
+  name: soulbreaker gray window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/gray_window.rsi
+    state: grille3
+  - type: Icon
+    sprite: _Europa/Structures/Windows/gray_window.rsi
+    state: grille3
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow1
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow2
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full1
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full1
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow3
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full2
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full2
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow4
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full3
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full3
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow5
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full4
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full4
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow6
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full5
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full5
+
+- type: entity
+  parent: SoulbreakerWindowDark
+  id: SoulbreakerWindow7
+  name: soulbreaker window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full6
+  - type: Icon
+    sprite: _Europa/Structures/Windows/soulbreaker_window.rsi
+    state: full6

@@ -89,8 +89,8 @@
         id: lungs
   - type: Woundable
     damageContainer: Inorganic
-    integrity: 200
-    integrityCap: 200
+    integrity: 250
+    integrityCap: 250
     thresholds:
       Minor: 180
       Moderate: 120

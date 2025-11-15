@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseMachine
+  parent: [ BaseMachine, BaseMajorContraband ]
   id: SoulbreakerShuttleConsole
   name: soulbreaker shuttle console
   description: Used to pilot a soulbreaker's shuttle.
@@ -52,6 +52,10 @@
     - SignalShuttleConsole3
     - SignalShuttleConsole4
     range: 90
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Godmode
 
 - type: entity
   parent: [ BaseMachine ]
@@ -102,3 +106,6 @@
     containers:
       key_slots:
       - EncryptionKeySoulbreaker
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

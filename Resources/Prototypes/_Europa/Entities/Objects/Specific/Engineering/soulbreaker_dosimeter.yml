@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseItem ]
+  parent: [ BaseItem, BaseMajorContraband ]
   id: SoulbreakerDosimeter
   name: soulbreaker dosimeter
   description: A handheld device used for detecting and measuring radiation pulses.
@@ -22,3 +22,6 @@
     - neck
     - belt
     - idcard
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

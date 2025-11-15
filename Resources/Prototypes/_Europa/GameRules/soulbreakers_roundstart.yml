@@ -1,0 +1,32 @@
+- type: gamePreset
+  id: Soulbreakers
+  alias:
+  - soulbreakers
+  name: soulbreakers-title
+  description: soulbreakers-description
+  showInVote: false
+  rules:
+  - Soulbreakers
+  - DummyNonAntagChance
+  - SubGamemodesRule
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: SoulbreakersSecret
+  alias:
+  - secretsoulbreakers
+  - soulbreakerssecret
+  name: secret-title
+  description: secret-description
+  showInVote: false
+  rules:
+  - Soulbreakers
+  - DummyNonAntagChance
+  - SubGamemodesRule
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation

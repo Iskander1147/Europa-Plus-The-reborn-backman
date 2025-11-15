@@ -1,0 +1,124 @@
+- type: entity
+  id: SoulbreakerBaseLocker
+  parent: BaseStructureDynamic
+  abstract: true
+  components:
+  - type: Animateable
+  - type: ResistLocker
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    noRot: true
+    sprite: _Europa/Structures/Storage/Soulbreakers/closet_tnc_2.rsi
+#    offset: "0.0,0.25"
+    layers:
+    - state: closed
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: open
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: MovedByPressure
+  - type: ItemSlots
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: EntityStorage
+    masksToRemove: 84
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+      paper_label: !type:ContainerSlot
+  - type: Weldable
+  - type: PlaceableSurface
+    placeCentered: true
+    isPlaceable: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: closed
+    stateDoorOpen: open
+    stateDoorClosed: closed
+
+- type: entity
+  id: SoulbreaketClosetTnc2
+  parent: SoulbreakerBaseLocker
+  name: soulbreaker tnc closet
+  description: A standard-issue Tri-Net corp. storage unit.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Storage/Soulbreakers/closet_tnc_2.rsi
+  - type: Lock
+  - type: AccessReader
+    access: [ [ "Soulbreaker" ] ]
+
+- type: entity
+  id: SoulbreaketClosetTnc
+  parent: SoulbreakerBaseLocker
+  name: soulbreaker tnc closet
+  description: A standard-issue Tri-Net corp. storage unit.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Storage/Soulbreakers/closet_tnc.rsi
+  - type: Lock
+  - type: AccessReader
+    access: [ [ "Soulbreaker" ] ]
+
+- type: entity
+  id: SoulbreaketClosetEmergency
+  parent: SoulbreakerBaseLocker
+  name: soulbreaker emergency closet
+  description: A standard-issue emergency storage unit.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Storage/Soulbreakers/closet_emergency.rsi
+
+- type: entity
+  id: SoulbreaketClosetMedical
+  parent: SoulbreakerBaseLocker
+  name: soulbreaker medical closet
+  description: A standard-issue medical storage unit.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Storage/Soulbreakers/closet_medical.rsi
+  - type: Lock
+  - type: AccessReader
+    access: [ [ "Soulbreaker" ] ]

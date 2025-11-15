@@ -1,1 +1,1 @@
-id-card-access-level-soulbreaker = Душелом
+id-card-access-level-soulbreaker = душелом

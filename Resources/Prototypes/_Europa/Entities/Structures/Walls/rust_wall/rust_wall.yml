@@ -1,11 +1,15 @@
 - type: entity
   parent: BaseWall
-  id: RustWall
-  name: rust wall
+  id: SoulbreakerRustWall
+  name: soulbreaker rust wall
   components:
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
   - type: Tag
     tags:
       - Wall
+      - Structure
   - type: Sprite
     sprite: _Europa/Structures/Walls/rust_wall.rsi
   - type: Icon
@@ -45,3 +49,14 @@
   - type: IconSmooth
     key: walls
     base: rust_wall
+  - type: RadiationBlocker
+    resistance: 50
+  - type: RCDDeconstructable
+    deconstructable: false
+  - type: Structure
+  - type: Pullable
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static

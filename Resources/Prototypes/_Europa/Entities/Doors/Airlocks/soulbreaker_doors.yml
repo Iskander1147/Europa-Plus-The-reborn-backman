@@ -1,0 +1,98 @@
+- type: entity
+  parent: Airlock
+  id: SoulbreakerAirlockHatch
+  name: soulbreaker hatch
+  description: You shouldn't open it, right?
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Doors/Soulbreaker/soulbreaker_hatch.rsi
+  - type: Weldable
+    time: 20
+  - type: AccessReader
+    access: [[ "Soulbreaker" ]]
+    breakOnAccessBreaker: false
+  - type: Door
+    openSound:
+      path: /Audio/_Europa/Structures/airlock_open.ogg
+    closeSound:
+      path: /Audio/_Europa/Structures/airlock_close.ogg
+    denySound:
+      path: /Audio/_Europa/Structures/airlock_deny2.ogg
+    closeTimeOne: 1.3
+    closeTimeTwo: 1.3
+    openTimeOne: 0.5
+    openTimeTwo: 1.3
+    openingAnimationTime: 1.35
+    closingAnimationTime: 1.35
+    pryTime: 20
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/_Europa/Structures/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/_Europa/Structures/airlock_boltswitch.ogg
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+  - type: RCDDeconstructable
+    deconstructable: false
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSoulbreaker ]
+
+- type: entity
+  parent: Airlock
+  id: SoulbreakerAirlockShuttle
+  name: soulbreaker shuttle airlock
+  description: You shouldn't open it, right?
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Doors/Soulbreaker/soulbreaker_shuttle_airlock.rsi
+  - type: Weldable
+    time: 40
+  - type: AccessReader
+    access: [[ "Soulbreaker" ]]
+    breakOnAccessBreaker: false
+  - type: Door
+    openSound:
+      path: /Audio/_Europa/Structures/airlock_open.ogg
+    closeSound:
+      path: /Audio/_Europa/Structures/airlock_close.ogg
+    denySound:
+      path: /Audio/_Europa/Structures/airlock_deny2.ogg
+    closeTimeOne: 1.6
+    closeTimeTwo: 1.6
+    openTimeOne: 1.35
+    openTimeTwo: 1.8
+    openingAnimationTime: 2.8
+    closingAnimationTime: 2.8
+    pryTime: 40
+    bumpOpen: false
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/_Europa/Structures/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/_Europa/Structures/airlock_boltswitch.ogg
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+  - type: RCDDeconstructable
+    deconstructable: false
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSoulbreaker ]

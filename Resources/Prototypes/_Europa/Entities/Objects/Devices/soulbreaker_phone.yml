@@ -14,3 +14,6 @@
     sprite: _Europa/Objects/Devices/soulbreaker_phone.rsi
   - type: Item
     sprite: _Europa/Objects/Devices/soulbreaker_phone.rsi
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

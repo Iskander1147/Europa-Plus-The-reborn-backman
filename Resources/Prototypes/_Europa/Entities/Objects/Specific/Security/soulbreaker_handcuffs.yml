@@ -37,6 +37,9 @@
         Blunt: 0
   - type: UseDelay
     delay: 3
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
 
 - type: entity
   name: broken soulbreaker handcuffs
@@ -47,3 +50,6 @@
   - type: Sprite
     sprite: _Europa/Objects/Specific/Security/soulbreaker_handcuffs.rsi
     state: broken
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

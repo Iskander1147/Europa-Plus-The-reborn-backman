@@ -129,3 +129,9 @@
   name: global-antagonist-unknown-name
   description: global-antagonist-unknown-description
   weight: 42
+
+- type: antagonist
+  id: globalAntagonistSoulbreaker
+  name: soulbreakers-title
+  description: role-type-soulbreaker-name
+  weight: 666

@@ -1,0 +1,11 @@
+- type: entity
+  id: SoulbreakerDefibrillatorOneHandedUnpowered
+  parent: BaseDefibrillator
+  suffix: One-Handed, Always Powered
+  name: soulbreaker compact defibrillator
+  description: This thing saves lives. Probably not yours.
+  components:
+  - type: Sprite
+    sprite: _Europa/Objects/Devices/soulbreaker_defib.rsi
+    layers:
+    - state: defib

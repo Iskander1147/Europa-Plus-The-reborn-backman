@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "Closed Party",
+  "copyright": "Randy Sandy",
+  "states": [
+    {
+      "name": "closed"
+    },
+    {
+      "name": "open"
+    },
+    {
+      "name": "welded"
+    }
+  ]
+}

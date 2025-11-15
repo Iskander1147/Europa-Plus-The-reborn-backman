@@ -1,3 +1,4 @@
 - type: accessLevel
   id: Soulbreaker
   name: id-card-access-level-soulbreaker
+  canAddToIdCard: false

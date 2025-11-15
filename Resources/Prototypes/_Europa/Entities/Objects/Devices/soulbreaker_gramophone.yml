@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseStructure
+  parent: [ BaseStructure, BaseMajorContraband ]
   id: SoulbreakerGramophone
   name: soulbreaker gramophone
   description: This wonderful melody inspires new achievements.
@@ -22,3 +22,6 @@
   - type: Appearance
   - type: ItemToggle
   - type: Anchorable
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

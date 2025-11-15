@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "Closed Party",
+  "copyright": "Randy Sandy",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "smalltable"
+    },
+    {
+      "name": "stable"
+    },
+    {
+      "name": "table6"
+    },
+    {
+      "name": "wood_table"
+    }
+  ]
+}

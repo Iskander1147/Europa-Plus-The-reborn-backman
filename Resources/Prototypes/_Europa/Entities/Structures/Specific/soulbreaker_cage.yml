@@ -1,0 +1,64 @@
+- type: entity
+  id: SoulbreakerCage
+  name: soulbreaker cage
+  description: Someone, look at this little animal!
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Icon
+    sprite: _Europa/Structures/Specific/soulbreaker_cage.rsi
+    state: cage
+  - type: Sprite
+    noRot: true
+    sprite: _Europa/Structures/Specific/soulbreaker_cage.rsi
+    layers:
+    - state: cage_behind
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: cage_closed
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 350
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Pullable
+  - type: Tag
+    tags:
+    - Structure
+  - type: Penetratable
+    penetrateDamage: 25
+    damagePenalty: 0.1
+  - type: Structure
+  - type: EntityStorage
+    showContents: false
+    openSound:
+      path: /Audio/_Europa/Structures/cage_open.ogg
+    closeSound:
+      path: /Audio/_Europa/Structures/cage_close.ogg
+    capacity: 1
+    openOnMove: false
+    occludesLight: false
+    airtight: false
+  - type: Appearance
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+  - type: EntityStorageVisuals
+    stateBaseClosed: cage_behind
+    stateDoorOpen: cage_open
+    stateDoorClosed: cage_closed
+  - type: AccessReader
+    access: [["Soulbreaker"]]
+  - type: Lock

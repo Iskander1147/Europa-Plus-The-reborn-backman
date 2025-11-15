@@ -45,3 +45,11 @@
   components:
   - type: AccessReader
     access: [["UnitedEarthGovernmentCommand"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSoulbreaker
+  suffix: Soulbreaker, Locked
+  components:
+  - type: AccessReader
+    access: [["Soulbreaker"]]

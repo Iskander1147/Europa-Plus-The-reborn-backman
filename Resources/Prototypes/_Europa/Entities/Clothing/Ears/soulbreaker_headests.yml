@@ -12,3 +12,6 @@
     sprite: _Europa/Clothing/Ears/soulbreaker_headset.rsi
   - type: Clothing
     sprite: _Europa/Clothing/Ears/soulbreaker_headset.rsi
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
