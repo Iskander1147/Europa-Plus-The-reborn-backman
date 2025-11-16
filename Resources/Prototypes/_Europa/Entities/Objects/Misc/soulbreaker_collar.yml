@@ -38,8 +38,10 @@
     slots:
     - neck
     equipDelay: 3
-    equipSound: SoulbreakerCollar
-    unequipSound: SoulbreakerCollarRemoved
+    equipSound:
+      collection: SoulbreakerCollar
+    unequipSound:
+      collection: SoulbreakerCollarRemoved
   - type: UseDelay
     delay: 1.5
 #  - type: ClothingSpeedModifier
