@@ -22,6 +22,24 @@ namespace Content.Shared.Cuffs.Components;
 public sealed partial class HandcuffComponent : Component
 {
     /// <summary>
+    ///     Determines if an entity can remove their own handcuffs
+    /// </summary>
+    [DataField]
+    public bool CanUncuffByThemself = true;
+
+    /// <summary>
+    ///     Determines if other entities can remove this entity's handcuffs
+    /// </summary>
+    [DataField]
+    public bool CanUncuffByOthers = true;
+
+    /// <summary>
+    ///     Determines if an entity can cuff itself
+    /// </summary>
+    [DataField]
+    public bool CanCuffThemself = true;
+
+    /// <summary>
     ///     The time it takes to cuff an entity.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]

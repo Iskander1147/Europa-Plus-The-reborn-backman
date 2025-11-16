@@ -1,7 +1,10 @@
 - type: entity
-  parent: BaseWall
   id: SoulbreakerRustWall
   name: soulbreaker rust wall
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
   components:
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -10,6 +13,7 @@
     tags:
       - Wall
       - Structure
+  - type: IsRoof
   - type: Sprite
     sprite: _Europa/Structures/Walls/rust_wall.rsi
   - type: Icon
@@ -46,6 +50,22 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 9999
+  - type: Airtight
+  - type: BlockWeather
+  - type: SunShadowCast
+  - type: ExaminableDamage
+    messages: WindowMessages
   - type: IconSmooth
     key: walls
     base: rust_wall
@@ -60,3 +80,4 @@
   - type: Clickable
   - type: Physics
     bodyType: Static
+  - type: Occluder

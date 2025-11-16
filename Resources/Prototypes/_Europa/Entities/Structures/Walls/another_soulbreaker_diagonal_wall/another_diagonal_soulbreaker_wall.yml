@@ -28,12 +28,13 @@
   - type: IsRoof
   - type: Sprite
     drawdepth: Walls
-    sprite: _Europa/Structures/Walls/another_soulbreaker_wall.rsi
+    sprite: _Europa/Structures/Walls/another_soulbreaker_diagonal_wall.rsi
+    state: state0
   - type: PlacementReplacement
     key: walls
   - type: Icon
-    sprite: _Europa/Structures/Walls/another_soulbreaker_wall.rsi
-    state: full
+    sprite: _Europa/Structures/Walls/another_soulbreaker_diagonal_wall.rsi
+    state: state0
   - type: Fixtures
     fixtures:
       fix1:
@@ -96,9 +97,9 @@
         sound:
           collection: MetalBreak
   - type: IconSmooth
-    key: walls
-    base: space_steel
     mode: Diagonal
+    key: walls
+    base: state
   - type: RadiationBlocker
     resistance: 100
   - type: Repairable

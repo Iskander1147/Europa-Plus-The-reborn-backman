@@ -100,3 +100,31 @@
           - !type:PlaySoundBehavior
             sound:
               collection: MetalBreak
+
+- type: entity
+  parent: ThrusterLarge
+  id: ThrusterLargeDebug
+  name: soulbreaker large thruster
+  suffix: Debug
+  components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Thruster
+    requireSpace: false
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Anchorable
+    flags: Unanchorable

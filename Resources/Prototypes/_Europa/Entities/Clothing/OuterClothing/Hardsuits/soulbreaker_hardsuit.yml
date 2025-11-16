@@ -108,6 +108,7 @@
     damageCoefficient: 0.05
   - type: ClothingGrantComponent
     component:
+    - type: Uncuffable
     - type: SupermatterImmune
     - type: EventHorizonIgnore
       horizonWhitelist:

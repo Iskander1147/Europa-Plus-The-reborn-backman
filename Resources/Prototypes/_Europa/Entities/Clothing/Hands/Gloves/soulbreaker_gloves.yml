@@ -13,6 +13,7 @@
     fiberColor: fibers-pitch-black
   - type: ClothingGrantComponent
     component:
+    - type: Uncuffable
     - type: Prying
       pryPowered: true
       force: true

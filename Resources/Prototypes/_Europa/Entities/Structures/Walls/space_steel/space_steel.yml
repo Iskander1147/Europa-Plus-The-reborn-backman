@@ -102,3 +102,4 @@
   - type: Clickable
   - type: Physics
     bodyType: Static
+  - type: Occluder

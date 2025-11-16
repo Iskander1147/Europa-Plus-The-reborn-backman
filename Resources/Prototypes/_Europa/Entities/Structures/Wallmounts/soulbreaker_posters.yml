@@ -75,6 +75,14 @@
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   parent: PaintingBase
@@ -88,6 +96,14 @@
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   parent: PaintingBase
@@ -96,11 +112,20 @@
   description: Cool mosaic.
   components:
   - type: Sprite
+    drawdepth: FloorTiles
     sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
     state: mosaic_ov
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   parent: PaintingBase
@@ -109,11 +134,20 @@
   description: Cool mosaic.
   components:
   - type: Sprite
+    drawdepth: FloorTiles
     sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
     state: mosaic
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   parent: PaintingBase
@@ -123,7 +157,15 @@
   components:
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters.rsi
-    state: mosaic
+    state: c
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

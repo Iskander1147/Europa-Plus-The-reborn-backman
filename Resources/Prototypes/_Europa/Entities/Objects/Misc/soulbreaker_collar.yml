@@ -32,25 +32,29 @@
     damage:
       types:
         Blunt: 0
-  - type: SelfUnremovableClothing
-  - type: Clothing
-    quickEquip: false
-    slots:
-    - neck
-    equipDelay: 3
-  - type: ClothingSpeedModifier
-    walkModifier: 0.01
-    sprintModifier: 0.01
+#  - type: SelfUnremovableClothing
+#  - type: Clothing
+#    quickEquip: false
+#    slots:
+#    - neck
+#    equipDelay: 3
+  - type: UseDelay
+    delay: 1.5
+#  - type: ClothingSpeedModifier
+#    walkModifier: 0.01
+#    sprintModifier: 0.01
   - type: InteractionOutline
   - type: Clickable
   - type: Pullable
   - type: ClothingGrantComponent
     component:
-    - type: Pacified
+#    - type: Pacified
     - type: SoulbreakerEnslavedRole
+    - type: SoulbreakerEnslaved
 #    - type: Muted
-    - type: BlockMovement
-      blockInteraction: true
+#    - type: BlockMovement
+#      blockInteraction: true
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: SoulbreakerCollar

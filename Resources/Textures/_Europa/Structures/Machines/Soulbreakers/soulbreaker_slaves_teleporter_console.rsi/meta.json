@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "license": "Closed Party",
+  "copyright": "RandySandy",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "comm0"
+    },
+    {
+      "name": "comm",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "commb"
+    }
+  ]
+}

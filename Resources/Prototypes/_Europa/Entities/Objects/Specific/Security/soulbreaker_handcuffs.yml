@@ -18,9 +18,10 @@
     size: Small
     storedRotation: 90
   - type: Handcuff
+    canCuffThemself: false
+    canUncuffByThemself: false
     cuffTime: 1.5
     uncuffTime: 15
-    breakoutTime: 9999
     breakOnRemove: true
     brokenPrototype: SoulbreakerHandcuffsBroken
   - type: Sprite

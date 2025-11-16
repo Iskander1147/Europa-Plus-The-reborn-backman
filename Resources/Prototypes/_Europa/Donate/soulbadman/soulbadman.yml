@@ -1,0 +1,14 @@
+- type: donateItem
+  id: soulbadmanChtoTiNadelal
+  ckey: soulbadman
+  item: CaptainIDCard
+
+- type: donateItem
+  id: soulbadmanAkms
+  ckey: soulbadman
+  item: WeaponRifleAk
+
+- type: donateItem
+  id: soulbadmanAkmsAmmo
+  ckey: soulbadman
+  item: MagazineLightRifle

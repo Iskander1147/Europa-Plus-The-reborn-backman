@@ -9,3 +9,19 @@
   - /Audio/_Europa/Structures/n_grille_hit.ogg
   - /Audio/_Europa/Structures/n_grille_hit2.ogg
   - /Audio/_Europa/Structures/n_grille_hit3.ogg
+
+- type: soundCollection
+  id: SoulbreakerCollar
+  files:
+  - /Audio/_Europa/Devices/Collar/laser1.ogg
+  - /Audio/_Europa/Devices/Collar/laser2.ogg
+  - /Audio/_Europa/Devices/Collar/laser3.ogg
+  - /Audio/_Europa/Devices/Collar/laser4.ogg
+
+- type: soundCollection
+  id: SoulbreakerCollarRemoved
+  files:
+  - /Audio/_Europa/Devices/Collar/laser_impact1.ogg
+  - /Audio/_Europa/Devices/Collar/laser_impact2.ogg
+  - /Audio/_Europa/Devices/Collar/laser_impact3.ogg
+  - /Audio/_Europa/Devices/Collar/laser_impact4.ogg

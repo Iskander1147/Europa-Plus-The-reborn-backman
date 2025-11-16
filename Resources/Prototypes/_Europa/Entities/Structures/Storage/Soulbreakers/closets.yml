@@ -10,7 +10,6 @@
   - type: Sprite
     noRot: true
     sprite: _Europa/Structures/Storage/Soulbreakers/closet_tnc_2.rsi
-#    offset: "0.0,0.25"
     layers:
     - state: closed
       map: ["enum.StorageVisualLayers.Base"]

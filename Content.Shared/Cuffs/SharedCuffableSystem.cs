@@ -597,7 +597,7 @@ namespace Content.Shared.Cuffs
             EnsureComp<HandcuffComponent>(handcuff, out var handcuffsComp);
             handcuffsComp.Used = true;
             Dirty(handcuff, handcuffsComp);
-            
+
             var ev = new TargetHandcuffedEvent();
             RaiseLocalEvent(target, ref ev);
 
@@ -615,6 +615,19 @@ namespace Content.Shared.Cuffs
         {
             if (!Resolve(handcuff, ref handcuffComponent) || !Resolve(target, ref cuffable, false))
                 return false;
+
+            if (user == target && !handcuffComponent.CanCuffThemself)
+            {
+                _popup.PopupClient(Loc.GetString("handcuff-component-cannot-cuff-themself"), user, user);
+                return false;
+            }
+
+            if (HasComp<UncuffableComponent>(target))
+            {
+                _popup.PopupClient(Loc.GetString("uncuffable-component-default-reason",
+                    ("identity", Identity.Name(target, EntityManager, user))), user, user);
+                return false;
+            }
 
             if (!TryComp<HandsComponent>(target, out var hands))
             {
@@ -744,6 +757,17 @@ namespace Content.Shared.Cuffs
 
             if (!Resolve(cuffsToRemove.Value, ref cuff))
                 return;
+
+            if (isOwner && !cuff.CanUncuffByThemself)
+            {
+                _popup.PopupClient(Loc.GetString("handcuff-component-cannot-uncuff-themself"), user, user);
+                return;
+            }
+            if (!isOwner && !cuff.CanUncuffByOthers)
+            {
+                _popup.PopupClient(Loc.GetString("handcuff-component-cannot-uncuff-others", ("target", Identity.Name(target, EntityManager, user))), user, user);
+                return;
+            }
 
             var attempt = new UncuffAttemptEvent(user, target);
             RaiseLocalEvent(user, ref attempt, true);

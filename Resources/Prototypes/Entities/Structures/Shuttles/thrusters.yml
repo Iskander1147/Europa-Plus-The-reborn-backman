@@ -242,7 +242,7 @@
   - type: Thruster
     thrusterType: Angular
     requireSpace: false
-    thrust: 100
+    thrust: 9999999
   - type: ApcPowerReceiver
     needsPower: false
     powerLoad: 0

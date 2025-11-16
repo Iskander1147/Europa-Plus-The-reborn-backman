@@ -8,3 +8,17 @@
     - InteQ
   - type: BallisticAmmoProvider
     capacity: 1500 # Was 500
+
+- type: entity
+  parent: [BaseWeaponBallisticTurret]
+  id: WeaponTurretSoulbreakers
+  suffix: Soulbreakers
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Soulbreakers
+  - type: BallisticAmmoProvider
+    capacity: 1500
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
