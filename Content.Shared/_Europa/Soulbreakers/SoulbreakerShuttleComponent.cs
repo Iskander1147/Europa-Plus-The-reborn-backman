@@ -1,6 +1,8 @@
-namespace Content.Server._Europa.GameTicking.Rules.Components;
+using Robust.Shared.GameStates;
 
-[RegisterComponent, Access(typeof(SoulbreakersRuleSystem))]
+namespace Content.Shared._Europa.Soulbreakers;
+
+[RegisterComponent, NetworkedComponent]
 public sealed partial class SoulbreakerShuttleComponent : Component
 {
     [DataField]

@@ -6,6 +6,8 @@ using Content.Shared.CombatMode;
 using Content.Shared.Database;
 using Content.Shared._EinsteinEngines.Flight;
 using Content.Shared.DoAfter;
+using Content.Shared.Emag.Systems;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -15,7 +17,6 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
-using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
@@ -44,7 +45,6 @@ namespace Content.Shared._Europa.Soulbreakers
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
         [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly SharedVirtualItemSystem _virtualItem = default!;
         [Dependency] private readonly SharedInteractionSystem _interaction = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly UseDelaySystem _delay = default!;
@@ -52,6 +52,7 @@ namespace Content.Shared._Europa.Soulbreakers
         [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = null!;
         [Dependency] private readonly SharedCombatModeSystem _combat = default!;
         [Dependency] private readonly SharedStunSystem _stun = default!;
+        [Dependency] private readonly SharedExplosionSystem _explosion = default!;
 
         private const string CollarSlot = "neck";
         private const float ModifiedSpeed = 0.1f;
@@ -83,16 +84,42 @@ namespace Content.Shared._Europa.Soulbreakers
             SubscribeLocalEvent<SoulbreakerEnslavableComponent, RemoveCollarDoAfterEvent>(OnRemoveCollarDoAfter);
 
             // Collar component events
+            SubscribeLocalEvent<SoulbreakerCollarComponent, ComponentShutdown>(OnCollarShutdown);
             SubscribeLocalEvent<SoulbreakerCollarComponent, AfterInteractEvent>(OnCollarAfterInteract);
             SubscribeLocalEvent<SoulbreakerCollarComponent, MeleeHitEvent>(OnCollarMeleeHit);
             SubscribeLocalEvent<SoulbreakerCollarComponent, AddCollarDoAfterEvent>(OnAddCollarDoAfter);
-            SubscribeLocalEvent<SoulbreakerCollarComponent, VirtualItemDeletedEvent>(OnCollarVirtualItemDeleted);
+
+            SubscribeLocalEvent<SoulbreakerCollarComponent, GotEmaggedEvent>(OnCollarEmagged);
         }
 
-        #region Enslaved Component Handlers
+        private void OnCollarEmagged(Entity<SoulbreakerCollarComponent> ent, ref GotEmaggedEvent args)
+        {
+            if (ent.Comp.EnslavedEntity == null)
+                return;
+
+            args.Handled = true;
+            ent.Comp.AttemptsToUnequip = 0;
+            ent.Comp.MaxAttemptsToUnequip = 999;
+            RemoveCollarFromSlot(ent.Comp.EnslavedEntity.Value);
+            RemCompDeferred<SoulbreakerEnslavedComponent>(ent.Comp.EnslavedEntity.Value);
+            _speedModifier.RefreshMovementSpeedModifiers(ent.Comp.EnslavedEntity.Value);
+        }
+
+        private void OnCollarShutdown(EntityUid uid, SoulbreakerCollarComponent component, ComponentShutdown args)
+        {
+            if (component.EnslavedEntity == null || TerminatingOrDeleted(component.EnslavedEntity.Value))
+                return;
+
+            RemoveCollarFromSlot(component.EnslavedEntity.Value);
+            RemCompDeferred<SoulbreakerEnslavedComponent>(component.EnslavedEntity.Value);
+            _speedModifier.RefreshMovementSpeedModifiers(component.EnslavedEntity.Value);
+        }
 
         private void OnEnslavedShutdown(EntityUid uid, SoulbreakerEnslavedComponent component, ComponentShutdown args)
         {
+            if (TerminatingOrDeleted(uid))
+                return;
+
             RemoveCollarFromSlot(uid);
             RemCompDeferred<SoulbreakerEnslavedComponent>(uid);
             _speedModifier.RefreshMovementSpeedModifiers(uid);
@@ -191,19 +218,19 @@ namespace Content.Shared._Europa.Soulbreakers
 
         private void OnUnequipAttempt(EntityUid uid, SoulbreakerEnslavedComponent component, IsUnequippingTargetAttemptEvent args)
         {
-            if (!HasComp<SoulbreakerCollarComponent>(args.Equipment))
+            if (!TryComp<SoulbreakerCollarComponent>(args.Equipment, out var collar))
                 return;
 
             if (!HasComp<SoulbreakerCollarAuthorizedComponent>(args.Unequipee))
             {
                 args.Cancel();
-                _popup.PopupClient(Loc.GetString("soulbreaker-collar-authorization-error-unequip"), uid, uid);
+                _popup.PopupClient(Loc.GetString("soulbreaker-collar-authorization-error-unequip"), args.Unequipee, args.Unequipee);
+                if (args.Unequipee == args.UnEquipTarget)
+                    return;
+                if ((collar.AttemptsToUnequip += 1) >= collar.MaxAttemptsToUnequip)
+                    _explosion.TriggerExplosive(args.Equipment);
             }
         }
-
-        #endregion
-
-        #region Collar Component Handlers
 
         private void OnCollarAfterInteract(EntityUid uid, SoulbreakerCollarComponent component, AfterInteractEvent args)
         {
@@ -247,7 +274,7 @@ namespace Content.Shared._Europa.Soulbreakers
 
             if (TryAddCollar(target, user, uid))
             {
-                HandleSuccessfulEnslavement(user, target, uid);
+                HandleSuccessfulEnslavement(user, target, uid, component);
             }
             else
             {
@@ -255,22 +282,13 @@ namespace Content.Shared._Europa.Soulbreakers
             }
         }
 
-        private void OnCollarVirtualItemDeleted(EntityUid uid, SoulbreakerCollarComponent component, VirtualItemDeletedEvent args)
-        {
-            UnEnslave(args.User, null, uid, collarComponent: component);
-        }
-
-        #endregion
-
-        #region Helper Methods
-
         private void RemoveCollarFromSlot(EntityUid uid)
         {
             if (_inventory.TryGetSlotEntity(uid, CollarSlot, out var collar) && HasComp<SoulbreakerCollarComponent>(collar))
                 _inventory.DropSlotContents(uid, CollarSlot);
         }
 
-        private void UpdateHeldItems(EntityUid uid, EntityUid collar, SoulbreakerEnslavableComponent? component = null)
+        private void UpdateHeldItems(EntityUid uid, SoulbreakerEnslavableComponent? component = null)
         {
             if (!Resolve(uid, ref component) || !TryComp<HandsComponent>(uid, out var hands))
                 return;
@@ -281,9 +299,6 @@ namespace Content.Shared._Europa.Soulbreakers
                     continue;
 
                 _hands.DoDrop(uid, hand);
-
-                if (_virtualItem.TrySpawnVirtualItemInHand(collar, uid, out var virtItem))
-                    EnsureComp<UnremoveableComponent>(virtItem.Value);
             }
         }
 
@@ -302,12 +317,13 @@ namespace Content.Shared._Europa.Soulbreakers
             _hands.TryDrop(user, collar);
             _inventory.TryEquip(target, collar, CollarSlot, force: true);
 
-            UpdateHeldItems(target, collar, enslavableComponent);
+            UpdateHeldItems(target, enslavableComponent);
             return true;
         }
 
-        private void HandleSuccessfulEnslavement(EntityUid user, EntityUid target, EntityUid collar)
+        private void HandleSuccessfulEnslavement(EntityUid user, EntityUid target, EntityUid collar, SoulbreakerCollarComponent component)
         {
+            component.EnslavedEntity = target;
             _stun.KnockdownOrStun(target, TimeSpan.FromMinutes(3), true);
             AddComp<SoulbreakerEnslavedComponent>(target);
             _speedModifier.RefreshMovementSpeedModifiers(target);
@@ -369,10 +385,6 @@ namespace Content.Shared._Europa.Soulbreakers
                 .RemoveWhere(e => e.AttachedEntity == target || e.AttachedEntity == user);
         }
 
-        #endregion
-
-        #region private API
-
         private bool TryEnslave(EntityUid user, EntityUid target, EntityUid collar, SoulbreakerCollarComponent? collarComponent = null)
         {
             if (!Resolve(collar, ref collarComponent))
@@ -417,7 +429,7 @@ namespace Content.Shared._Europa.Soulbreakers
                 return true;
             }
 
-            var enslavingTime = GetEnslavingTime(target, TimeSpan.FromSeconds(3)); //clothing.EquipDelay
+            var enslavingTime = GetEnslavingTime(target, collarComponent.EnslavingTime);
 
             var doAfterEventArgs = new DoAfterArgs(EntityManager, user, enslavingTime, new AddCollarDoAfterEvent(), collar, target, collar)
             {
@@ -652,10 +664,6 @@ namespace Content.Shared._Europa.Soulbreakers
             }
         }
 
-        #endregion
-
-        #region Event Handlers
-
         private void OnUnEnslaveAttempt(ref UnEnslaveAttemptEvent args)
         {
             if (args.Cancelled || !Exists(args.User) || Deleted(args.User))
@@ -670,8 +678,6 @@ namespace Content.Shared._Europa.Soulbreakers
             if (args.Cancelled)
                 _popup.PopupClient(Loc.GetString("soulbreaker-collar-cannot-interact-message"), args.Target, args.User);
         }
-
-        #endregion
     }
 
     [Serializable, NetSerializable]

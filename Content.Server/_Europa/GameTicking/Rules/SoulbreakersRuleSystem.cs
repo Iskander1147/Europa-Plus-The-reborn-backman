@@ -19,6 +19,7 @@ using Content.Server.Communications;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Shuttles.Events;
+using Content.Shared._Europa.Soulbreakers;
 using Content.Shared.Zombies;
 
 namespace Content.Server._Europa.GameTicking.Rules;

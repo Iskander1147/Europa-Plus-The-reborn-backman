@@ -83,17 +83,6 @@
         - MachineMask
         layer:
         - MachineLayer
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 500
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
   - type: Transform
     anchored: true
   - type: EncryptionKeyHolder
@@ -110,3 +99,231 @@
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
+  - type: Godmode
+
+# TELEPORTATION STUFF
+
+# SOULBREAKERS
+
+- type: entity
+  parent: BaseMachine
+  id: SoulbreakerCrewTeleporter
+  name: soulbreaker crew teleporter console
+  description: Used to teleport crew members between the ship and station.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_teleporter.rsi
+    state: tele
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: Unanchorable
+  - type: Physics
+    bodyType: Static
+    canMove: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: SoulbreakerCrewTeleporter
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#4a86e8"
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Speech
+  - type: Godmode
+
+- type: entity
+  parent: BaseStructure
+  id: SoulbreakerCrewTeleporterPad
+  name: soulbreaker crew teleportation pad
+  description: A platform for safe crew teleportation.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_teleporter.rsi
+    state: tele1
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: Unanchorable
+  - type: Physics
+    bodyType: Static
+    canMove: false
+    canCollide: false
+  - type: SoulbreakerCrewTeleporterPad
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#4a86e8"
+    enabled: false
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Godmode
+
+
+- type: entity
+  parent: BaseMachine
+  id: SoulbreakerSlavesTeleporter
+  name: soulbreaker slaves teleporter console
+  description: Used to teleport slaves FROM the station TO the shuttle.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_slaves_teleporter_console.rsi
+    state: comm
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: Unanchorable
+  - type: Physics
+    bodyType: Static
+    canMove: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: SoulbreakerSlavesTeleporter
+    cooldown: 10
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#e84a4a"
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Speech
+  - type: Godmode
+
+- type: entity
+  parent: BaseStructure
+  id: SoulbreakerSlavesTeleporterPad
+  name: soulbreaker slave teleportation pad
+  description: A platform for slave teleportation.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_slaves_teleporter.rsi
+    state: chair
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: Unanchorable
+  - type: Physics
+    bodyType: Static
+    canMove: false
+    canCollide: false
+  - type: SoulbreakerSlavesTeleporterPad
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#e84a4a"
+    enabled: false
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Godmode
+
+
+- type: entity
+  parent: BaseMachine
+  id: SoulbreakerSlaveSeller
+  name: soulbreaker slave seller console
+  description: Used to sell enslaved individuals.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_slaves_teleporter_console.rsi
+    state: comm
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: Unanchorable
+  - type: Physics
+    bodyType: Static
+    canMove: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: SoulbreakerSlaveSeller
+    cooldown: 10
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#e84a4a"
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Speech
+  - type: Godmode
+
+- type: entity
+  parent: BaseStructure
+  id: SoulbreakerSlavesSellPad
+  name: soulbreaker slave sales pad
+  description: A platform where buckled slaves can be sold.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_slaves_teleporter.rsi
+    state: chair2
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: Unanchorable
+  - type: Physics
+    bodyType: Static
+    canMove: false
+    canCollide: false
+  - type: SoulbreakerSlavesSellPad
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#e84a4a"
+    enabled: false
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide
+  - type: Godmode

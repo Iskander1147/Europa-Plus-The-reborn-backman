@@ -7,5 +7,17 @@ namespace Content.Shared._Europa.Soulbreakers;
 public sealed partial class SoulbreakerCollarComponent : Component
 {
     [DataField]
+    public EntityUid? EnslavedEntity;
+
+    [DataField]
+    public TimeSpan EnslavingTime = TimeSpan.FromSeconds(1.5);
+
+    [DataField]
     public TimeSpan UnEnslavingTime = TimeSpan.FromSeconds(3);
+
+    [DataField]
+    public int MaxAttemptsToUnequip = 5;
+
+    [DataField]
+    public int AttemptsToUnequip = 0;
 }

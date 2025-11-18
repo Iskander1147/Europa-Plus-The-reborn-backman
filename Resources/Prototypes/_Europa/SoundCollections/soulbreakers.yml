@@ -25,3 +25,14 @@
   - /Audio/_Europa/Devices/Collar/laser_impact2.ogg
   - /Audio/_Europa/Devices/Collar/laser_impact3.ogg
   - /Audio/_Europa/Devices/Collar/laser_impact4.ogg
+
+- type: soundCollection
+  id: SoulbreakerConsoleInteract
+  files:
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact1.ogg
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact2.ogg
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact3.ogg
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact4.ogg
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact5.ogg
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact6.ogg
+  - /Audio/_Europa/Machines/SoulbreakerConsole/console_interact7.ogg
