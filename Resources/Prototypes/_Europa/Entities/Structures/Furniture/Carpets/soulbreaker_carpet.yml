@@ -1,0 +1,75 @@
+- type: entity
+  id: SoulbreakerCarpet
+  parent: BaseStructure
+  name: soulbreaker carpet
+  description: "Fancy walking surface."
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet.rsi
+    state: hcarp
+  - type: Icon
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet.rsi
+    state: hcarp
+  - type: Tag
+    tags:
+    - Carpet
+    - ForceFixRotations
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: TrayScanReveal
+
+- type: entity
+  id: SoulbreakerCarpet2
+  parent: SoulbreakerCarpet
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet2.rsi
+    state: mcarpet0
+  - type: Icon
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet2.rsi
+    state: mcarpet0
+
+- type: entity
+  id: SoulbreakerCarpet3
+  parent: SoulbreakerCarpet
+  components:
+  - type: Sprite
+    noRot: false
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet2.rsi
+    state: mcarpet1
+  - type: Icon
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet2.rsi
+    state: mcarpet1
+  - type: Tag
+    tags:
+    - Carpet
+
+- type: entity
+  id: SoulbreakerCarpet4
+  parent: SoulbreakerCarpet
+  components:
+  - type: Sprite
+    noRot: false
+    drawdepth: FloorTiles
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet2.rsi
+    state: mcarpet2
+  - type: Icon
+    sprite: _Europa/Structures/Furniture/Carpets/soulbreaker_carpet2.rsi
+    state: mcarpet2
+  - type: Tag
+    tags:
+    - Carpet

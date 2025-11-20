@@ -6,6 +6,7 @@ using Content.Shared._Europa.Soulbreakers;
 using Content.Shared.Buckle;
 using Content.Shared.Chat;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -31,7 +32,6 @@ namespace Content.Server._Europa.Soulbreakers
     {
         [Dependency] private readonly StationSystem _station = default!;
         [Dependency] private readonly ChatSystem _chat = default!;
-        [Dependency] private readonly PullingSystem _pulling = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly AudioSystem _audio = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
@@ -45,6 +45,7 @@ namespace Content.Server._Europa.Soulbreakers
         [Dependency] private readonly MapSystem _mapSystem = default!;
         [Dependency] private readonly TurfSystem _turf = default!;
         [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
+        [Dependency] private readonly InventorySystem _inventory = default!;
 
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -55,7 +56,7 @@ namespace Content.Server._Europa.Soulbreakers
         private const string ErrorOnCooldownMessage = "soulbreaker-cooldown";
         private const string ErrorNoSlavesMessage = "soulbreaker-teleport-error-no-slaves";
         private const string ErrorNotBuckledMessage = "soulbreaker-sell-error-not-buckled";
-        private const string ErrorNotOnPadMessage = "soulbreaker-sell-error-not-on-pad";
+        // private const string ErrorNotOnPadMessage = "soulbreaker-sell-error-not-on-pad";
         private const string SlaveSoldMessage = "soulbreaker-sell-success";
         private const string TargetSelectedMessage = "soulbreaker-teleport-target-selected";
 
@@ -145,7 +146,7 @@ namespace Content.Server._Europa.Soulbreakers
 
             if (IsOnShuttle(subjectX))
             {
-                SendError(uid, ErrorNotOnPadMessage);
+                SendError(uid, ErrorNoTargetMessage);
                 return;
             }
 
@@ -219,17 +220,35 @@ namespace Content.Server._Europa.Soulbreakers
                 return;
             }
 
-            CreatePortals(uid, comp);
+            TogglePortals(uid, comp);
         }
 
-        private void CreatePortals(EntityUid uid, SoulbreakerTeleportServerComponent comp)
+        private void TogglePortals(EntityUid uid, SoulbreakerTeleportServerComponent comp)
         {
-            // удалить старые порталы
-            if (comp.ShuttlePortal != null && Exists(comp.ShuttlePortal.Value))
-                QueueDel(comp.ShuttlePortal.Value);
+            var hasAnyPortal =
+                (comp.ShuttlePortal is { } sh && Exists(sh)) ||
+                (comp.StationPortal is { } st && Exists(st));
 
-            if (comp.StationPortal != null && Exists(comp.StationPortal.Value))
-                QueueDel(comp.StationPortal.Value);
+            if (hasAnyPortal)
+            {
+                if (comp.ShuttlePortal is { } shp && Exists(shp))
+                    QueueDel(shp);
+
+                if (comp.StationPortal is { } stp && Exists(stp))
+                    QueueDel(stp);
+
+                comp.ShuttlePortal = null;
+                comp.StationPortal = null;
+
+                _chat.TrySendInGameICMessage(uid,
+                    "Порталы деактивированы.",
+                    InGameICChatType.Speak,
+                    false);
+
+                comp.NextUseTime = _gameTiming.CurTime + comp.Cooldown;
+                Dirty(uid, comp);
+                return;
+            }
 
             EntityUid? crewPad = GetCrewPad();
             if (crewPad == null)
@@ -491,12 +510,18 @@ namespace Content.Server._Europa.Soulbreakers
                     if (!HasComp<SoulbreakerEnslavedComponent>(ent))
                         continue;
 
+                    if (!_inventory.TryGetSlotEntity(ent, "neck", out var collar) ||
+                        !TryComp<SoulbreakerCollarComponent>(collar, out var collarComp) ||
+                        collarComp.EnslavedEntity != ent)
+                    {
+                        continue;
+                    }
+
                     if (!_buckle.IsBuckled(ent))
                     {
                         isNotBuckled = true;
                         continue;
                     }
-
 
                     if (!IsOnSameTile(ent, pad))
                         continue;

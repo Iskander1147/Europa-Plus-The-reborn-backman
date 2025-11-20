@@ -175,6 +175,8 @@
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
   - type: Sprinter
+    staminaDrainRate: 15
+    sprintSpeedMultiplier: 1.2
 # appearance
   - type: RandomHumanoidAppearance
   - type: RandomMetadata

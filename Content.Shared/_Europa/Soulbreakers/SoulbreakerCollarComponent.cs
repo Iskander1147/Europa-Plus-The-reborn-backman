@@ -16,7 +16,7 @@ public sealed partial class SoulbreakerCollarComponent : Component
     public TimeSpan UnEnslavingTime = TimeSpan.FromSeconds(3);
 
     [DataField]
-    public int MaxAttemptsToUnequip = 5;
+    public int MaxAttemptsToUnequip = 3;
 
     [DataField]
     public int AttemptsToUnequip = 0;

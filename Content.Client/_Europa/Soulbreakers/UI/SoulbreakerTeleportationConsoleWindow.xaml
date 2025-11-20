@@ -5,7 +5,7 @@
     Resizable="False">
     <BoxContainer Orientation="Vertical" Margin="10">
         <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" HorizontalExpand="True">
-            <Button Name="OneModeButton" Text="{Loc 'Одого'}" HorizontalExpand="True" StyleClasses="OpenRight" />
+            <Button Name="OneModeButton" Text="{Loc 'Одного'}" HorizontalExpand="True" StyleClasses="OpenRight" />
             <Button Name="AllModeButton" Text="{Loc 'Всех'}" HorizontalExpand="True" StyleClasses="OpenLeft" />
         </BoxContainer>
 

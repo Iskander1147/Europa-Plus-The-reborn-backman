@@ -126,6 +126,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: TrayScanReveal
 
 - type: entity
   parent: PaintingBase
@@ -148,6 +149,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: TrayScanReveal
 
 - type: entity
   parent: PaintingBase
@@ -169,3 +171,17 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+
+- type: entity
+  parent: PaintingBase
+  id: PaintingSoulbreaker11
+  name: soulbreakers poster
+  description: Suffer.
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _Europa/Structures/Wallmounts/Posters/soulbreaker_posters_big.rsi
+    state: suffer
+  - type: GuideHelp
+    guides:
+    - SoulbreakersGuide

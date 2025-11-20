@@ -43,27 +43,17 @@
       collection: SoulbreakerCollarRemoved
   - type: UseDelay
     delay: 1.5
-#  - type: ClothingSpeedModifier
-#    walkModifier: 0.01
-#    sprintModifier: 0.01
   - type: InteractionOutline
   - type: Clickable
   - type: Pullable
-#  - type: ClothingGrantComponent
-#    component:
-#    - type: Pacified
-#    - type: SoulbreakerEnslavedRole
-#    - type: SoulbreakerEnslaved
-#    - type: Muted
-#    - type: BlockMovement
-#      blockInteraction: true
   - type: GuideHelp
     guides:
     - SoulbreakersGuide
   - type: SoulbreakerCollar
-  - type: Explosive
-    explosionType: MicroBomb
-    totalIntensity: 500
-    intensitySlope: 500
-    maxIntensity: 500
-    canCreateVacuum: false
+#  - type: Explosive
+#    explosionType: MicroBomb
+#    totalIntensity: 500
+#    intensitySlope: 500
+#    maxIntensity: 500
+#    canCreateVacuum: false
+  - type: ShockOnTrigger

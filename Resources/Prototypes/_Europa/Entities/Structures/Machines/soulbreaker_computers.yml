@@ -168,7 +168,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    drawdepth: FloorTiles
+    drawdepth: Objects
     sprite: _Europa/Structures/Machines/Soulbreakers/soulbreaker_teleporter.rsi
     state: tele1
   - type: Transform

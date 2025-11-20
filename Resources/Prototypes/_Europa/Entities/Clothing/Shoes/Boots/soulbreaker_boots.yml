@@ -37,9 +37,6 @@
   - type: ComponentToggler
     components:
     - type: NoSlip
-    - type: ClothingSpeedModifier
-      walkModifier: 1.3
-      sprintModifier: 1.2
   - type: ItemTogglePrefix
     prefixOn: on
   - type: ToggleClothingPrefix
