@@ -11,9 +11,9 @@ public sealed partial class SoulbreakerCrewTeleporterComponent : Component
     [DataField("cooldown")]
     public TimeSpan Cooldown = TimeSpan.FromSeconds(3);
 
-    [ViewVariables]
+    [DataField]
     public TimeSpan NextTeleportTime;
 
-    [ViewVariables]
+    [DataField]
     public bool TeleportAll;
 }

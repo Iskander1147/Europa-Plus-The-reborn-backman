@@ -31,7 +31,7 @@ public sealed class SoulbreakersRuleSystem : GameRuleSystem<SoulbreakersRuleComp
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SoulbreakerSomeoneWasSold>(OnEnslavedSold);
+       SubscribeLocalEvent<SoulbreakerSomeoneWasSold>(OnEnslavedSold);
     }
 
     #region --- Round End Summary ---
@@ -76,11 +76,11 @@ public sealed class SoulbreakersRuleSystem : GameRuleSystem<SoulbreakersRuleComp
         var query = AllEntityQuery<SoulbreakerRoleComponent, MindContainerComponent>();
         while (query.MoveNext(out var uid, out _, out _))
         {
-            if (!_mindSystem.TryGetMind(uid, out var mindId, out _))
+            if (!_mindSystem.TryGetMind(uid, out _, out _))
                 continue;
 
             var icName = GetPlayerICName(uid);
-            var oocName = GetPlayerOOCName(mindId);
+            var oocName = GetPlayerOOCName(uid);
             var status = GetHealthStatus(uid);
 
             var text = Loc.GetString("soulbreakers-round-end-user-was-soulbreaker",
@@ -93,11 +93,11 @@ public sealed class SoulbreakersRuleSystem : GameRuleSystem<SoulbreakersRuleComp
         var assistantQuery = AllEntityQuery<SoulbreakerAssistantRoleComponent, MindContainerComponent>();
         while (assistantQuery.MoveNext(out var uid, out _, out _))
         {
-            if (!_mindSystem.TryGetMind(uid, out var mindId, out _))
+            if (!_mindSystem.TryGetMind(uid, out _, out _))
                 continue;
 
             var icName = GetPlayerICName(uid);
-            var oocName = GetPlayerOOCName(mindId);
+            var oocName = GetPlayerOOCName(uid);
             var status = GetHealthStatus(uid);
 
             var text = Loc.GetString("soulbreakers-round-end-user-was-soulbreaker-assistant",
@@ -168,10 +168,10 @@ public sealed class SoulbreakersRuleSystem : GameRuleSystem<SoulbreakersRuleComp
         return "Неизвестный";
     }
 
-    private string GetPlayerOOCName(EntityUid mindId)
+    private string GetPlayerOOCName(EntityUid uid)
     {
         // OOC имя - это всегда имя сессии
-        return _player.TryGetSessionByEntity(mindId, out var session)
+        return _player.TryGetSessionByEntity(uid, out var session)
             ? session.Name
             : "Unknown";
     }
@@ -207,9 +207,6 @@ public sealed class SoulbreakersRuleSystem : GameRuleSystem<SoulbreakersRuleComp
                 Name = Name(ev.Slave),
                 Price = ev.Price
             });
-
-            // Для отладки
-            Logger.Info($"Slave sold: {Name(ev.Slave)} for {ev.Price:F2}. Total: {soulbreakersRule.EnslavedStonks:F2}");
         }
     }
 

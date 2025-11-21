@@ -25,18 +25,17 @@ public sealed partial class SoulbreakersRuleComponent : Component
     public float EnslavedStonks = 0;
 
     [DataField]
-    public List<SoldSlaveInfo> SoldSlaves = new();
-
-    [ViewVariables]
     public bool PlayedIslamicTrance = false;
 
-    [ViewVariables]
+    [DataField]
     public bool PlayedSoulbreakersWin = false;
+
+    public List<SoldSlaveInfo> SoldSlaves = new();
 }
 
-[Serializable, NetSerializable]
 public sealed class SoldSlaveInfo
 {
     public string Name = string.Empty;
+
     public float Price;
 }

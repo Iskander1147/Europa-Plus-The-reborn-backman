@@ -8,6 +8,6 @@ public sealed partial class SoulbreakerSlavesTeleporterComponent : Component
     [DataField("cooldown")]
     public TimeSpan Cooldown = TimeSpan.FromSeconds(15);
 
-    [ViewVariables]
+    [DataField]
     public TimeSpan NextTeleportTime;
 }
