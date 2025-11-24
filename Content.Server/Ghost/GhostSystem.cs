@@ -322,9 +322,6 @@ namespace Content.Server.Ghost
 
         private void OnGhostStartup(EntityUid uid, GhostComponent component, ComponentStartup args)
         {
-            if (_player.TryGetSessionByEntity(uid, out var session))
-                _adminManager.ReAdmin(session);
-
             // Allow this entity to be seen by other ghosts.
             var visibility = EnsureComp<VisibilityComponent>(uid);
 
@@ -344,9 +341,6 @@ namespace Content.Server.Ghost
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
         {
-            if (_player.TryGetSessionByEntity(uid, out var session))
-                _adminManager.DeAdmin(session);
-
             // Perf: If the entity is deleting itself, no reason to change these back.
             if (Terminating(uid))
                 return;
@@ -388,16 +382,21 @@ namespace Content.Server.Ghost
 
         private void OnMindRemovedMessage(EntityUid uid, GhostComponent component, MindRemovedMessage args)
         {
+            if (_player.TryGetSessionByEntity(args.Container.Owner, out var session))
+                _adminManager.DeAdmin(session);
             DeleteEntity(uid);
         }
 
         private void OnMindUnvisitedMessage(EntityUid uid, GhostComponent component, MindUnvisitedMessage args)
         {
+            if (args.Session != null)
+                _adminManager.DeAdmin(args.Session);
             DeleteEntity(uid);
         }
 
         private void OnPlayerDetached(EntityUid uid, GhostComponent component, PlayerDetachedEvent args)
         {
+            _adminManager.DeAdmin(args.Player);
             DeleteEntity(uid);
         }
 
@@ -423,6 +422,7 @@ namespace Content.Server.Ghost
             }
 
             _mind.UnVisit(actor.PlayerSession);
+            _adminManager.DeAdmin(actor.PlayerSession);
         }
 
         #region Warp
@@ -892,6 +892,9 @@ namespace Content.Server.Ghost
 
             if (ghost == null)
                 return false;
+
+            if (_player.TryGetSessionByEntity(ghost.Value, out var session1))
+                _adminManager.ReAdmin(session1);
 
             return true;
         }

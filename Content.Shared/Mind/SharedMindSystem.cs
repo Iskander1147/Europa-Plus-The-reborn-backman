@@ -383,7 +383,10 @@ public abstract partial class SharedMindSystem : EntitySystem
         }
 
         Dirty(mindId, mind);
-        RaiseLocalEvent(oldVisitingEnt, new MindUnvisitedMessage(), true);
+        ICommonSession? session = null;
+        if (mind.OwnedEntity is {} ent)
+            _playerManager.TryGetSessionByEntity(ent, out session);
+        RaiseLocalEvent(oldVisitingEnt, new MindUnvisitedMessage(session), true);
     }
 
     public void WipeMind(ICommonSession player)
