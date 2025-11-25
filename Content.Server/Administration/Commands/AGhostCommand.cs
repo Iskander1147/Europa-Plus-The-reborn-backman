@@ -149,6 +149,7 @@ public sealed class AGhostCommand : LocalizedCommands
 
         var comp = _entities.GetComponent<GhostComponent>(ghost);
         ghostSystem.SetCanReturnToBody((ghost, comp), canReturn);
-        _adminManager.ReAdmin(player);
+        if (_adminManager.IsAdmin(player, true))
+            _adminManager.ReAdmin(player);
     }
 }

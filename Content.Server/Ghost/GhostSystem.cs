@@ -382,21 +382,24 @@ namespace Content.Server.Ghost
 
         private void OnMindRemovedMessage(EntityUid uid, GhostComponent component, MindRemovedMessage args)
         {
-            if (_player.TryGetSessionByEntity(args.Container.Owner, out var session))
+            if (_player.TryGetSessionByEntity(args.Container.Owner, out var session)
+                && _adminManager.IsAdmin(session))
                 _adminManager.DeAdmin(session);
             DeleteEntity(uid);
         }
 
         private void OnMindUnvisitedMessage(EntityUid uid, GhostComponent component, MindUnvisitedMessage args)
         {
-            if (args.Session != null)
+            if (args.Session != null
+                && _adminManager.IsAdmin(args.Session))
                 _adminManager.DeAdmin(args.Session);
             DeleteEntity(uid);
         }
 
         private void OnPlayerDetached(EntityUid uid, GhostComponent component, PlayerDetachedEvent args)
         {
-            _adminManager.DeAdmin(args.Player);
+            if (_adminManager.IsAdmin(args.Player))
+                _adminManager.DeAdmin(args.Player);
             DeleteEntity(uid);
         }
 
@@ -422,7 +425,8 @@ namespace Content.Server.Ghost
             }
 
             _mind.UnVisit(actor.PlayerSession);
-            _adminManager.DeAdmin(actor.PlayerSession);
+            if (_adminManager.IsAdmin(actor.PlayerSession))
+                _adminManager.DeAdmin(actor.PlayerSession);
         }
 
         #region Warp
@@ -893,7 +897,8 @@ namespace Content.Server.Ghost
             if (ghost == null)
                 return false;
 
-            if (_player.TryGetSessionByEntity(ghost.Value, out var session1))
+            if (_player.TryGetSessionByEntity(ghost.Value, out var session1)
+                && _adminManager.IsAdmin(session1, true))
                 _adminManager.ReAdmin(session1);
 
             return true;
